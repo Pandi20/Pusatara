@@ -1,5 +1,6 @@
-# PLEASE CREATE SEPARATE BRANCH FOR EACH PATH/FEATURE
-## DO NOT USE MAIN BRANCH. [EXAMPLE](https://github.com/Pandi20/Pusatara/tree/api)
+# DO NOT USE MAIN BRANCH 
+## PLEASE CREATE SEPARATE BRANCH FOR EACH PATH/FEATURE
+## [EXAMPLE](https://github.com/Pandi20/Pusatara/tree/api)
 This is the project for CH2-PS007
 
 Project: Pusatara (Short for Pusaka Nusantara)
