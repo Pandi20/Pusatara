@@ -9,4 +9,31 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Welcome -->
+    <string name="welcome">Welcome</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Log In</string>
+    <string name="title_welcome_page">Welcome to <font color="#96490C">PUSATARA</font></string>
+    <string name="message_welcome_page">Are you ready to explore Batik and Songket?</string>
+
+    <!-- Login -->
+    <string name="message_login_page">Continue your journey exploring Batik and Songket in Pusatara!</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="email_hint">Your Email</string>
+    <string name="password_hint">Your Password</string>
+
+    <!-- Signup -->
+    <string name="message_signup_page">Expand your curiosity about Batik and Songket with Pusatara!</string>
+    <string name="name">Name</string>
+    <string name="name_hint">Your Name</string>
+    <string name="already_account">Already have an account?</string>
+
+    <!-- Profile -->
+    <string name="profile">Profile</string>
+    <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="theme">Theme</string>
+    <string name="logOut">Log Out</string>
 </resources>
