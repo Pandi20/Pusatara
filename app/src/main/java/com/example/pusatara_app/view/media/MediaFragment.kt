@@ -1,21 +1,20 @@
-package com.example.pusatara_app
+package com.example.pusatara_app.view.media
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.pusatara_app.databinding.FragmentGlossaryBinding
+import com.example.pusatara_app.databinding.FragmentMediaBinding
 
-class GlossaryFragment : Fragment() {
-    private lateinit var binding: FragmentGlossaryBinding
+class MediaFragment : Fragment() {
+    private lateinit var binding : FragmentMediaBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentGlossaryBinding.inflate(inflater, container, false)
+        binding = FragmentMediaBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 }

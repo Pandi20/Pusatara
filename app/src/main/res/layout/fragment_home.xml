@@ -4,25 +4,158 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".view.home.HomeFragment">
 
-    <Button
-        android:id="@+id/button_first"
+    <LinearLayout
+        android:id="@+id/greetingHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/next"
+        android:orientation="vertical"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+        <LinearLayout
+            android:id="@+id/greetingUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/hallo_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hallo,"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/username_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="20sp"
+                android:text="Jane Doe" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/msgGreeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explore Batik and Songket"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/greetingUser"
+            app:layout_constraintStart_toStartOf="@+id/greetingUser" />
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileHome"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:src="@drawable/ic_avatar"
+        app:civ_border_width="5dp"
+        app:civ_border_color="@color/purple"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/greetingHome"
+        app:layout_constraintTop_toTopOf="@+id/greetingHome" />
+
+    <com.google.android.material.search.SearchBar
+        android:id="@+id/searchBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="32dp"
+        android:hint="Search Batik or Songket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/greetingHome"></com.google.android.material.search.SearchBar>
+
+    <com.google.android.material.search.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="Search Batik or Songket"
+        app:layout_anchor="@id/searchBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"></com.google.android.material.search.SearchView>
 
-    <TextView
-        android:id="@+id/textview_first"
+    <LinearLayout
+        android:id="@+id/sectionTypeBatik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_first_fragment"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
+        android:layout_marginTop="32dp" >
+        <TextView
+            android:id="@+id/typeBatik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Types of Batik"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/navToBatikGlossary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_section"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBatik"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/sectionTypeBatik"
+        app:layout_constraintStart_toStartOf="@+id/sectionTypeBatik"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/sectionTypeSongket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvBatik"
+        android:layout_marginTop="32dp" >
+        <TextView
+            android:id="@+id/typeSongket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Types of Songket"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/navToSongketGlossary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_section"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSongket"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/sectionTypeSongket"
+        app:layout_constraintStart_toStartOf="@+id/sectionTypeSongket"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

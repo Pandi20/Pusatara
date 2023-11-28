@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.pusatara_app.HomeFragment"
+        android:name="com.example.pusatara_app.view.home.HomeFragment"
         android:label="@string/bottombar_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_glossary"
-        android:name="com.example.pusatara_app.HomeFragment"
+        android:name="com.example.pusatara_app.view.home.HomeFragment"
         android:label="@string/bottombar_glossary"
         tools:layout="@layout/fragment_glossary" />
 
     <fragment
         android:id="@+id/navigation_media"
-        android:name="com.example.pusatara_app.HomeFragment"
+        android:name="com.example.pusatara_app.view.home.HomeFragment"
         android:label="@string/bottombar_media"
         tools:layout="@layout/fragment_media" />
 

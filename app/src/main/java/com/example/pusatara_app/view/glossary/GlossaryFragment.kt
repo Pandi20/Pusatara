@@ -1,20 +1,21 @@
-package com.example.pusatara_app
+package com.example.pusatara_app.view.glossary
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.pusatara_app.databinding.FragmentHomeBinding
+import com.example.pusatara_app.databinding.FragmentGlossaryBinding
 
-class HomeFragment : Fragment() {
-    private lateinit var binding : FragmentHomeBinding
+class GlossaryFragment : Fragment() {
+    private lateinit var binding: FragmentGlossaryBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentGlossaryBinding.inflate(inflater, container, false)
         return binding.root
     }
+
 }
