@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_glossary,
             R.id.navigation_media
         ).build()
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
     }
