@@ -23,12 +23,18 @@
     <string name="password">Password</string>
     <string name="email_hint">Your Email</string>
     <string name="password_hint">Your Password</string>
+    <string name="donthave_account">Do you have an account?</string>
+    <string name="login_failed">Login Failed</string>
+    <string name="login_invalid">Invalid Username or Password!</string>
 
     <!-- Signup -->
     <string name="message_signup_page">Expand your curiosity about Batik and Songket with Pusatara!</string>
-    <string name="name">Name</string>
-    <string name="name_hint">Your Name</string>
+    <string name="username">Userame</string>
+    <string name="username_hint">Your Username</string>
     <string name="already_account">Already have an account?</string>
+    <string name="reg_failed">Registration Failed</string>
+    <string name="reg_success">Registration Successful</string>
+    <string name="reg_dupplicate">Email is already registered</string>
 
     <!-- Profile -->
     <string name="profile">Profile</string>
@@ -36,4 +42,7 @@
     <string name="english">English</string>
     <string name="theme">Theme</string>
     <string name="logOut">Log Out</string>
+    <string name="logout_confirmation">Logout Confirmation</string>
+    <string name="logout_message">Are you sure you want to log out?</string>
+    <string name="logout_cancel">Cancel</string>
 </resources>

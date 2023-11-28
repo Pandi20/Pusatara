@@ -41,7 +41,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:alpha="0"
-        android:text="@string/name"
+        android:text="@string/username"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,12 +63,12 @@
         tools:alpha="100">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_register_name"
+            android:id="@+id/ed_register_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:hint="@string/name_hint"
+            android:hint="@string/username_hint"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 

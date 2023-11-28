@@ -5,15 +5,25 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.ViewModelProvider
 import com.example.pusatara_app.R
 import com.example.pusatara_app.databinding.ActivitySignupBinding
 import com.example.pusatara_app.view.login.LoginActivity
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 @Suppress("DEPRECATION")
 class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
+    private lateinit var signupViewModel: SignupViewModel
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
@@ -21,12 +31,89 @@ class SignupActivity : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.signup)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        signupViewModel = ViewModelProvider(this)[SignupViewModel::class.java]
+
         playAnimation()
+
+        val signupButton = binding.signupButton
+        signupButton.setOnClickListener {
+            val name = binding.edRegisterUsername.text.toString()
+            val email = binding.edRegisterEmail.text.toString()
+            val password = binding.edRegisterPassword.text.toString()
+
+            val loadingProgressBar = binding.ProgressBarSignup
+
+            GlobalScope.launch(Dispatchers.IO) {
+                try {
+                    runOnUiThread {
+                        loadingProgressBar.visibility = View.VISIBLE
+                    }
+
+                    val response = signupViewModel.register(name, email, password)
+                    runOnUiThread {
+                        loadingProgressBar.visibility = View.GONE
+
+                        if (response.message == "User registered successfully!") {
+                            val message = response.message
+                            showSuccessDialog(message)
+                            Log.d("SignupActivity", "Pendaftaran berhasil: $message")
+                        } else {
+                            val errorMessage = response.message ?: "Terjadi kesalahan"
+                            showErrorDialog(errorMessage)
+                            Log.e("SignupActivity", "Pendaftaran gagal: $errorMessage")
+                        }
+                    }
+                } catch (e: Exception) {
+                    runOnUiThread {
+                        loadingProgressBar.visibility = View.GONE
+
+                        val errorMessage = when (e) {
+                            is HttpException -> {
+                                if (e.code() == 400) {
+                                    getString(R.string.reg_dupplicate)
+                                } else {
+                                    "${e.message}"
+                                }
+                            }
+                            else -> "${e.message}"
+                        }
+                        showErrorDialog(errorMessage)
+                        Log.e("SignupActivity", errorMessage)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showSuccessDialog(message: String) {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.reg_success))
+            .setMessage(message)
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+
+                val intent = Intent(this@SignupActivity, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            .show()
+    }
+
+
+    private fun showErrorDialog(errorMessage: String) {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.reg_failed))
+            .setMessage(errorMessage)
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     fun onLoginTextClick(view: View) {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun playAnimation() {
