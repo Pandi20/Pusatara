@@ -41,6 +41,11 @@ class SignupActivity : AppCompatActivity() {
             val email = binding.edRegisterEmail.text.toString()
             val password = binding.edRegisterPassword.text.toString()
 
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                showErrorDialog(getString(R.string.empty_fields_error))
+                return@setOnClickListener
+            }
+
             val loadingProgressBar = binding.ProgressBarSignup
 
             GlobalScope.launch(Dispatchers.IO) {

@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.pusatara_app.R
 import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivityProfileBinding
 import com.example.pusatara_app.view.welcome.WelcomeActivity
+import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -24,8 +28,9 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.title = getString(R.string.profile)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        theme()
         userPreferences = UserPreferences.getInstance(applicationContext)
 
         logoutButton = binding.logoutButton
@@ -58,6 +63,26 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    fun theme() {
+        val switchTheme = findViewById<SwitchMaterial>(R.id.switch_theme)
+
+        val pref = ProfilePreferences.getInstance(application.dataStore)
+        val settingViewModel = ViewModelProvider(this, ProfileViewModelFactory(pref))[ProfileViewModel::class.java]
+        settingViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                switchTheme.isChecked = true
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                switchTheme.isChecked = false
+            }
+        }
+
+        switchTheme.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
+            settingViewModel.saveThemeSetting(isChecked)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
