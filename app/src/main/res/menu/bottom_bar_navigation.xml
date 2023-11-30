@@ -4,15 +4,15 @@
     <item
         android:id="@+id/menuHome"
         android:title="@string/bottombar_home"
-        android:icon="@drawable/ic_menu_home" />
+        android:icon="@drawable/ic_home_menu" />
 
     <item
         android:id="@+id/menuGlossary"
         android:title="@string/bottombar_glossary"
-        android:icon="@drawable/ic_menu_glossary" />
+        android:icon="@drawable/ic_glossary_menu" />
 
     <item
         android:id="@+id/menuMedia"
         android:title="@string/bottombar_media"
-        android:icon="@drawable/ic_menu_media" />
+        android:icon="@drawable/ic_media_menu" />
 </menu>
