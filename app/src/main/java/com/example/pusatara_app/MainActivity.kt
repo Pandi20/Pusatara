@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.pusatara_app.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,15 +16,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val bottomNavigationView: BottomNavigationView = binding.bottomNavigation
-        val navController = findNavController(R.id.nav_graph)
+        val navController = findNavController(R.id.nav_host_fragment)
 
         val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navigation_home,
-            R.id.navigation_glossary,
-            R.id.navigation_media
+            R.id.menuHome,
+            R.id.menuGlossary,
+            R.id.menuMedia
         ).build()
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
     }
 }

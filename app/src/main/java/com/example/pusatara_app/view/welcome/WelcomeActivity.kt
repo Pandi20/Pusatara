@@ -1,14 +1,14 @@
 package com.example.pusatara_app.view.welcome
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.pusatara_app.view.login.LoginActivity
+import com.example.pusatara_app.MainActivity
 import com.example.pusatara_app.R
 import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivityWelcomeBinding
-import com.example.pusatara_app.view.profile.ProfileActivity
+import com.example.pusatara_app.view.login.LoginActivity
 import com.example.pusatara_app.view.signup.SignupActivity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -30,7 +30,7 @@ class WelcomeActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val token = userPreferences.getToken().first()
             if (!token.isNullOrBlank()) {
-                val intent = Intent(this@WelcomeActivity, ProfileActivity::class.java)
+                val intent = Intent(this@WelcomeActivity, MainActivity::class.java)
                 intent.putExtra("TOKEN", token)
                 startActivity(intent)
                 finish()

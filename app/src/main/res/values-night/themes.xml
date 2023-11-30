@@ -2,15 +2,49 @@
     <!-- Base application theme. -->
     <style name="Theme.Pusataraapp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/dark_brown</item>
+        <item name="colorPrimaryVariant">@color/dark_brown2</item>
+        <item name="colorOnPrimary">@color/on_dark_brown</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/dark_purple</item>
+        <item name="colorSecondaryVariant">@color/purple2</item>
+        <item name="colorOnSecondary">@color/on_dark_purple</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Pusataraapp.NoActionBar" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Dark Button Styles -->
+    <style name="BtnPrimary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/dark_brown</item>
+        <item name="android:textColor">@color/on_dark_brown</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BtnSecondary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/dark_purple</item>
+        <item name="android:textColor">@color/on_dark_purple</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BtnDanger" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/dark_red</item>
+        <item name="android:textColor">@color/on_dark_red</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Dark Switch Styles -->
+    <style name="SwitchTheme" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/dark_brown</item>
+        <item name="trackTint">@color/dark_brown2</item>
+    </style>
+
+    <style name="Theme.Pusataraapp.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <style name="Theme.Pusataraapp.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 </resources>

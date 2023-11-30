@@ -3,19 +3,19 @@ package com.example.pusatara_app.view.login
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.pusatara_app.MainActivity
 import com.example.pusatara_app.R
 import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivityLoginBinding
-import com.example.pusatara_app.view.profile.ProfileActivity
 import com.example.pusatara_app.view.signup.SignupActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -71,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
                                     userPreferences.saveEmail(email)
                                 }
 
-                                val intent = Intent(this@LoginActivity, ProfileActivity::class.java)
+                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
                                 intent.putExtra("TOKEN", token)
                                 startActivity(intent)
                                 finish()

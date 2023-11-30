@@ -29,7 +29,7 @@
 
     <!-- Signup -->
     <string name="message_signup_page">Expand your curiosity about Batik and Songket with Pusatara!</string>
-    <string name="username">Userame</string>
+    <string name="username">Username</string>
     <string name="username_hint">Your Username</string>
     <string name="already_account">Already have an account?</string>
     <string name="reg_failed">Registration Failed</string>
@@ -50,4 +50,16 @@
     <string name="bottombar_home">Home</string>
     <string name="bottombar_glossary">Glossary</string>
     <string name="bottombar_media">Media</string>
+
+    <!-- Fragment Home-->
+    <string name="hallo_home">Hallo,</string>
+    <string name="dummy_username">Jane Doe</string>
+    <string name="msg_greeting_home">Explore Batik and Songket</string>
+    <string name="searchbar_hint">Search Batik or Songket</string>
+    <string name="type_batik">Types of Batik</string>
+    <string name="type_songket">Types of Songket</string>
+
+    <!--Detail Activity-->
+    <string name="detail_title">Detail Title</string>
+    <string name="detail_desc">Detail Description</string>
 </resources>

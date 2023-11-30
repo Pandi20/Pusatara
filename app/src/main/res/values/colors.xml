@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Light Colors-->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -12,5 +13,16 @@
     <color name="brown2">#632F06</color>
     <color name="brown3">#FFDBC8</color>
     <color name="purple">#924274</color>
+    <color name="purple2">#7E375B</color>
     <color name="red">#BA1A1A</color>
+
+    <!--Dark Colors-->
+    <color name="dark_brown">#FFB68B</color>
+    <color name="dark_brown2">#D18667</color>
+    <color name="on_dark_brown">#522300</color>
+    <color name="dark_purple">#FFAEDA</color>
+    <color name="dark_purple2">#D670B1</color>
+    <color name="on_dark_purple">#5A1143</color>
+    <color name="dark_red">#FFB4AB</color>
+    <color name="on_dark_red">#690005</color>
 </resources>

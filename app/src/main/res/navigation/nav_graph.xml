@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/navigation_home">
+    app:startDestination="@id/menuHome">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/menuHome"
         android:name="com.example.pusatara_app.view.home.HomeFragment"
         android:label="@string/bottombar_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_glossary"
-        android:name="com.example.pusatara_app.view.home.HomeFragment"
+        android:id="@+id/menuGlossary"
+        android:name="com.example.pusatara_app.view.glossary.GlossaryFragment"
         android:label="@string/bottombar_glossary"
         tools:layout="@layout/fragment_glossary" />
 
     <fragment
-        android:id="@+id/navigation_media"
-        android:name="com.example.pusatara_app.view.home.HomeFragment"
+        android:id="@+id/menuMedia"
+        android:name="com.example.pusatara_app.view.media.MediaFragment"
         android:label="@string/bottombar_media"
         tools:layout="@layout/fragment_media" />
 
