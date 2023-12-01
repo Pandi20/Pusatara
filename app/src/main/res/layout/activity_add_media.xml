@@ -110,7 +110,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <ProgressBar
-            android:id="@+id/ProgressBar_AddStory"
+            android:id="@+id/ProgressBar_AddMedia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

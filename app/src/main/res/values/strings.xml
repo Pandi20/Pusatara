@@ -74,4 +74,5 @@
     <string name="gallery">Gallery</string>
     <string name="upload">Upload</string>
     <string name="add_media_desc">Description</string>
+    <string name="empty_image_warning">Please select an image file first</string>
 </resources>
