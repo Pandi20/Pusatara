@@ -63,4 +63,15 @@
     <!--Detail Activity-->
     <string name="detail_title">Detail Title</string>
     <string name="detail_desc">Detail Description</string>
+
+    <!-- Fragment Media-->
+    <string name="media_title">Media Title</string>
+    <string name="media_desc">Media Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatem blanditiis qui praesentium sequi non delectus beatae, impedit minus, ab illum aspernatur recusandae, molestias vel.</string>
+
+    <!-- Add Media Activity-->
+    <string name="add_media">Add Media</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="upload">Upload</string>
+    <string name="add_media_desc">Description</string>
 </resources>

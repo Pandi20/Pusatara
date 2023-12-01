@@ -15,6 +15,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.media.AddMediaActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.detail.DetailActivity"
             android:exported="false" />
         <activity

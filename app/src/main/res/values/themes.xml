@@ -42,6 +42,14 @@
         <item name="trackTint">@color/brown3</item>
     </style>
 
+    <!-- Fab Media custom cornerSize -->
+    <style name="ShapeAppearanceOverlay.FloatingActionButton.SquareWithRadius" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item> <!-- Adjust this value to control the radius -->
+    </style>
+
+
+
 
     <style name="Theme.Pusataraapp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
