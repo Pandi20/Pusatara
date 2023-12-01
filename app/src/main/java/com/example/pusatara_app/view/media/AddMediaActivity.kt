@@ -1,6 +1,5 @@
 package com.example.pusatara_app.view.media
 
-import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -101,7 +100,7 @@ class AddMediaActivity : AppCompatActivity() {
             val imageRequestBody = imageFile.asRequestBody("image/jpeg".toMediaType())
 
             val imagePart = MultipartBody.Part.createFormData(
-                "photo",
+                "image",
                 imageFile.name,
                 imageRequestBody
             )
@@ -114,9 +113,6 @@ class AddMediaActivity : AppCompatActivity() {
                     showLoading(false)
 
                     if (successResponse.message == "Post created successfully!") {
-                        val intent = Intent(this@AddMediaActivity, MediaFragment::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
                         finish()
                     }
                 } catch (e: HttpException) {
