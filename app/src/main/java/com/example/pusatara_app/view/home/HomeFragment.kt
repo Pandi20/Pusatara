@@ -17,12 +17,15 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.profileHome.setOnClickListener {
-            val intent = Intent(requireActivity(), ProfileActivity::class.java)
-            startActivity(intent)
+             val intent = Intent(requireContext(), ProfileActivity::class.java)
+             startActivity(intent)
         }
-
-        return binding.root
     }
 }
