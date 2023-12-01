@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.profileHome.setOnClickListener {
-             val intent = Intent(requireContext(), ProfileActivity::class.java)
+             val intent = Intent(requireActivity(), ProfileActivity::class.java)
              startActivity(intent)
         }
     }
