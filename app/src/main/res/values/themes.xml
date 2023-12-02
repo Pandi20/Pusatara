@@ -45,7 +45,8 @@
     <!-- Fab Media custom cornerSize -->
     <style name="ShapeAppearanceOverlay.FloatingActionButton.SquareWithRadius" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">18dp</item> <!-- Adjust this value to control the radius -->
+        <item name="cornerSize">18dp</item>
+        <!-- Adjust this value to control the radius -->
     </style>
 
 

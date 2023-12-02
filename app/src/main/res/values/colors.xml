@@ -15,6 +15,7 @@
     <color name="purple">#924274</color>
     <color name="purple2">#7E375B</color>
     <color name="red">#BA1A1A</color>
+    <color name="redFab">#B91E13</color>
 
     <!--Dark Colors-->
     <color name="dark_brown">#FFB68B</color>
@@ -25,4 +26,6 @@
     <color name="on_dark_purple">#5A1143</color>
     <color name="dark_red">#FFB4AB</color>
     <color name="on_dark_red">#690005</color>
+    <color name="dark_redFab">#FFB4A8</color>
+    <color name="on_dark_refFab">#690000</color>
 </resources>

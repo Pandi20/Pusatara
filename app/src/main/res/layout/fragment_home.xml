@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".view.home.HomeFragment">
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/fab_scan"
+        app:icon="@drawable/baseline_camera_24"
+        app:backgroundTint="@color/redFab"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.FloatingActionButton.SquareWithRadius" />
+
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

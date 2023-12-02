@@ -59,6 +59,7 @@
     <string name="searchbar_hint">Search Batik or Songket</string>
     <string name="type_batik">Types of Batik</string>
     <string name="type_songket">Types of Songket</string>
+    <string name="fab_scan">Scan</string>
 
     <!--Detail Activity-->
     <string name="detail_title">Detail Title</string>
