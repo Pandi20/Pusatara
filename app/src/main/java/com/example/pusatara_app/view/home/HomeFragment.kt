@@ -27,5 +27,10 @@ class HomeFragment : Fragment() {
              val intent = Intent(requireActivity(), ProfileActivity::class.java)
              startActivity(intent)
         }
+
+        binding.fabScan.setOnClickListener {
+            val intent = Intent(requireActivity(), UploadScanActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

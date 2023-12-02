@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/story_row"
+    android:id="@+id/item_batik_songket"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginTop="4dp"
-    android:layout_marginEnd="8dp"
-    card_view:cardCornerRadius="4dp">
+    android:layout_marginEnd="16dp"
+    card_view:cardCornerRadius="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,17 +24,21 @@
             android:id="@+id/tvBatikName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Batik Name"
+            android:text="@string/tv_batik_name"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_margin="8dp"/>
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginHorizontal="12dp"/>
 
         <TextView
             android:id="@+id/tvBatikDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Batik Description"
+            android:maxLines="1"
+            android:text="@string/tv_batik_desc"
             android:textSize="14sp"
-            android:layout_margin="8dp"/>
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="16dp"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

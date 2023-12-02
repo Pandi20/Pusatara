@@ -42,7 +42,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/profile_name"
         app:layout_constraintTop_toBottomOf="@+id/profile_name"
-        tools:text="@string/email" />
+        tools:text="@string/email"
+        android:textColor="@color/blue"/>
 
     <TextView
         android:id="@+id/tv_language"
