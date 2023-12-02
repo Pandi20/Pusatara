@@ -19,7 +19,7 @@
         android:paddingBottom="8dp">
 
         <ImageView
-            android:id="@+id/img_story_photo"
+            android:id="@+id/img_media_photo"
             android:layout_width="0dp"
             android:layout_height="170dp"
             android:layout_marginTop="8dp"
@@ -45,7 +45,7 @@
             android:layout_height="26dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_toEndOf="@id/img_story_photo"
+            android:layout_toEndOf="@id/img_media_photo"
             android:textSize="20sp"
             android:textStyle="bold"
             card_view:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
@@ -57,35 +57,35 @@
 
 
         <TextView
-            android:id="@+id/tv_story_title"
+            android:id="@+id/tv_media_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_toEndOf="@id/img_story_photo"
+            android:layout_toEndOf="@id/img_media_photo"
             android:textSize="18sp"
             android:textStyle="bold"
-            card_view:layout_constraintEnd_toEndOf="@+id/img_story_photo"
-            card_view:layout_constraintStart_toStartOf="@+id/img_story_photo"
-            card_view:layout_constraintTop_toBottomOf="@+id/img_story_photo"
+            card_view:layout_constraintEnd_toEndOf="@+id/img_media_photo"
+            card_view:layout_constraintStart_toStartOf="@+id/img_media_photo"
+            card_view:layout_constraintTop_toBottomOf="@+id/img_media_photo"
             tools:text="@string/media_title" />
 
         <TextView
-            android:id="@+id/tv_story_description"
+            android:id="@+id/tv_media_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
-            android:layout_toEndOf="@id/img_story_photo"
+            android:layout_toEndOf="@id/img_media_photo"
             android:ellipsize="end"
             android:maxLines="2"
             android:textSize="14sp"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="@+id/img_story_photo"
-            card_view:layout_constraintStart_toStartOf="@+id/img_story_photo"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_story_title"
+            card_view:layout_constraintEnd_toEndOf="@+id/img_media_photo"
+            card_view:layout_constraintStart_toStartOf="@+id/img_media_photo"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_media_title"
             tools:text="@string/media_desc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

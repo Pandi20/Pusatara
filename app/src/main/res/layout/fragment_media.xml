@@ -7,7 +7,7 @@
     tools:context=".view.media.MediaFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_story"
+        android:id="@+id/rv_media"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"

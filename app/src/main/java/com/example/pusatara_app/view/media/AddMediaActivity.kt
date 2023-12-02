@@ -11,7 +11,7 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import com.example.pusatara_app.R
-import com.example.pusatara_app.data.api.response.MediaResponse
+import com.example.pusatara_app.data.api.response.UploadMediaResponse
 import com.example.pusatara_app.data.api.retrofit.ApiConfig
 import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivityAddMediaBinding
@@ -117,7 +117,7 @@ class AddMediaActivity : AppCompatActivity() {
                     }
                 } catch (e: HttpException) {
                     val errorBody = e.response()?.errorBody()?.string()
-                    val errorResponse = Gson().fromJson(errorBody, MediaResponse::class.java)
+                    val errorResponse = Gson().fromJson(errorBody, UploadMediaResponse::class.java)
                     showToast(errorResponse.message!!)
                     showLoading(false)
                 }
