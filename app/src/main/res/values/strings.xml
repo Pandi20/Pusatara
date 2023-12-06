@@ -60,6 +60,7 @@
     <string name="type_batik">Types of Batik</string>
     <string name="type_songket">Types of Songket</string>
     <string name="fab_scan">Scan</string>
+    <string name="content_desc_section_btn">Navigate to Glossary</string>
 
     <!--Detail Activity-->
     <string name="detail_title">Detail Title</string>
@@ -88,4 +89,8 @@
 
     <!-- Item Scan Output-->
     <string name="tv_result_percent">0%</string>
+
+    <!-- menu home toolbar -->
+    <string name="search_btn">Search</string>
+    <string name="profile_btn">Profile</string>
 </resources>

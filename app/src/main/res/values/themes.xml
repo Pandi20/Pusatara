@@ -9,6 +9,9 @@
         <item name="colorSecondary">@color/purple</item>
         <item name="colorSecondaryVariant">@color/purple2</item>
         <item name="colorOnSecondary">@color/white</item>
+        <!--Tertiary brand color-->
+        <item name="colorTertiary">@color/redFab</item>
+        <item name="colorOnTertiary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

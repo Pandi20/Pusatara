@@ -29,7 +29,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add"
-        app:backgroundTint="#B91E13"
+        android:textColor="?attr/colorOnTertiary"
+        app:iconTint="?attr/colorOnTertiary"
+        app:backgroundTint="?attr/colorTertiary"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.FloatingActionButton.SquareWithRadius"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
