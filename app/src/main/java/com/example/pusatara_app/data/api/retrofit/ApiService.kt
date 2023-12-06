@@ -37,8 +37,9 @@ interface ApiService {
     suspend fun uploadMedia(
         @Header("Authorization") token: String,
         @Part file: MultipartBody.Part,
+        @Part("userId") userId: RequestBody,
         @Part("title") title: RequestBody,
-        @Part("content") content: RequestBody,
+        @Part("content") content: RequestBody
     ): UploadMediaResponse
 
     @GET("posts")

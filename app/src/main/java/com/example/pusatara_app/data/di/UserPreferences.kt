@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -15,6 +16,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     private val USER_NAME = stringPreferencesKey("user_name")
     private val USER_EMAIL = stringPreferencesKey("email")
     private val USER_TOKEN = stringPreferencesKey("token")
+    private val USER_ID = intPreferencesKey("user_id")
 
     fun getToken(): Flow<String?> {
         return dataStore.data.map { preferences ->
@@ -52,8 +54,21 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         }
     }
 
+    suspend fun saveUserId(userId: Int) {
+        dataStore.edit { preferences ->
+            preferences[USER_ID] = userId
+        }
+    }
+
+    fun getUserId(): Flow<Int?> {
+        return dataStore.data.map { preferences ->
+            preferences[USER_ID]
+        }
+    }
+
     suspend fun clearDataStore() {
         dataStore.edit { preferences ->
+            preferences.remove(USER_ID)
             preferences.remove(USER_TOKEN)
             preferences.remove(USER_NAME)
             preferences.remove(USER_EMAIL)

@@ -87,28 +87,31 @@ class AddMediaActivity : AppCompatActivity() {
     }
 
     private fun uploadMedia() {
-        currentImageUri?.let { uri ->
-            val imageFile = uriToFile(uri, this).reduceFileImage()
-            Log.d("Image File", "showImage: ${imageFile.path}")
-            val description = binding.edAddDescription.text.toString()
-            val title = binding.edAddTitle.text.toString()
+        lifecycleScope.launchWhenCreated {
+            val userId = userPreferences.getUserId().first()
 
-            showLoading(true)
+            currentImageUri?.let { uri ->
+                val imageFile = uriToFile(uri, this@AddMediaActivity).reduceFileImage()
+                Log.d("Image File", "showImage: ${imageFile.path}")
+                val description = binding.edAddDescription.text.toString()
+                val title = binding.edAddTitle.text.toString()
 
-            val titleRequestBody = title.toRequestBody("text/plain".toMediaType())
-            val descriptionRequestBody = description.toRequestBody("text/plain".toMediaType())
-            val imageRequestBody = imageFile.asRequestBody("image/jpeg".toMediaType())
+                showLoading(true)
 
-            val imagePart = MultipartBody.Part.createFormData(
-                "image",
-                imageFile.name,
-                imageRequestBody
-            )
+                val userIdRequestBody = userId.toString().toRequestBody("text/plain".toMediaType())
+                val titleRequestBody = title.toRequestBody("text/plain".toMediaType())
+                val descriptionRequestBody = description.toRequestBody("text/plain".toMediaType())
+                val imageRequestBody = imageFile.asRequestBody("image/jpeg".toMediaType())
 
-            lifecycleScope.launch {
+                val imagePart = MultipartBody.Part.createFormData(
+                    "image",
+                    imageFile.name,
+                    imageRequestBody
+                )
+
                 try {
                     val apiService = ApiConfig.getApiService()
-                    val successResponse = apiService.uploadMedia("Bearer $token", imagePart, titleRequestBody, descriptionRequestBody)
+                    val successResponse = apiService.uploadMedia("Bearer $token", imagePart, userIdRequestBody, titleRequestBody, descriptionRequestBody)
                     showToast(successResponse.message!!)
                     showLoading(false)
 
@@ -121,8 +124,8 @@ class AddMediaActivity : AppCompatActivity() {
                     showToast(errorResponse.message!!)
                     showLoading(false)
                 }
-            }
-        } ?: showToast(getString(R.string.empty_image_warning))
+            } ?: showToast(getString(R.string.empty_image_warning))
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {

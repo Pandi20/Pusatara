@@ -40,6 +40,15 @@ data class DataItem(
 	@field:SerializedName("isPoll")
 	val isPoll: Boolean? = null,
 
-	@field:SerializedName("updatedAt")
-	val updatedAt: String? = null
+	@field:SerializedName("user")
+	val user: User? = null
+)
+
+data class User(
+
+	@field:SerializedName("id")
+	val id: Int? = null,
+
+	@field:SerializedName("username")
+	val username: String? = null
 )

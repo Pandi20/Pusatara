@@ -44,6 +44,7 @@ class MediaAdapter : PagingDataAdapter<DataItem, MediaAdapter.ListViewHolder>(DI
             Glide.with(itemView.context)
                 .load(media.imageUrl)
                 .into(mediaImg)
+            mediaUsername.text = media.user?.username ?: "Unknown"
             titleMedia.text = media.title
             mediaDescription.text = media.content
 

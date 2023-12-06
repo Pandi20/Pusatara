@@ -64,9 +64,11 @@ class LoginActivity : AppCompatActivity() {
                                 userPreferences.saveToken(token)
                                 Log.i("LoginActivity", "Token berhasil disimpan: $token")
 
+                                val idUser = response.id
                                 val userName = response.username
                                 val email = response.email
-                                if (userName != null && email != null) {
+                                if (userName != null && email != null && idUser != null) {
+                                    userPreferences.saveUserId(idUser)
                                     userPreferences.saveUsername(userName)
                                     userPreferences.saveEmail(email)
                                 }
