@@ -1,6 +1,7 @@
 package com.example.pusatara_app.data.api.retrofit
 
 import com.example.pusatara_app.data.api.response.DetailMediaResponse
+import com.example.pusatara_app.data.api.response.LikePostResponse
 import com.example.pusatara_app.data.api.response.LoginResponse
 import com.example.pusatara_app.data.api.response.MediaResponse
 import com.example.pusatara_app.data.api.response.RegisterResponse
@@ -56,4 +57,12 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") mediaId: Int
     ): DetailMediaResponse
+
+    @POST("posts/like")
+    suspend fun likePost(
+        @Header("Authorization") token: String,
+        @Field("userId") userId: Int,
+        @Field("postId") postId: Int
+    ): LikePostResponse
+
 }
