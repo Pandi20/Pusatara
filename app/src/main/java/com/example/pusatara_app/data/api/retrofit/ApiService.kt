@@ -1,5 +1,6 @@
 package com.example.pusatara_app.data.api.retrofit
 
+import com.example.pusatara_app.data.api.response.DetailMediaResponse
 import com.example.pusatara_app.data.api.response.LoginResponse
 import com.example.pusatara_app.data.api.response.MediaResponse
 import com.example.pusatara_app.data.api.response.RegisterResponse
@@ -13,6 +14,7 @@ import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -48,4 +50,10 @@ interface ApiService {
         @Query("page") page: Int = 1,
         @Query("size") size: Int = 20
     ): MediaResponse
+
+    @GET("posts/{id}")
+    suspend fun getMediaById(
+        @Header("Authorization") token: String,
+        @Path("id") mediaId: Int
+    ): DetailMediaResponse
 }

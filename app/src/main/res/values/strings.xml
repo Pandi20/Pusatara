@@ -63,8 +63,12 @@
     <string name="content_desc_section_btn">Navigate to Glossary</string>
 
     <!--Detail Activity-->
+    <string name="media_detail">Detail Media</string>
     <string name="detail_title">Detail Title</string>
     <string name="detail_desc">Detail Description</string>
+    <string name="error">Error: </string>
+    <string name="error_internet">A network error occurred. Check your internet connection.</string>
+    <string name="unauthorized">Unauthorized: Please log in again.</string>
 
     <!-- Fragment Media-->
     <string name="media_title">Media Title</string>

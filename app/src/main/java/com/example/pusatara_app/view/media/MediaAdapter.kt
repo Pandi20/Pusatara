@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pusatara_app.data.api.response.DataItem
 import com.example.pusatara_app.databinding.ItemMediaBinding
-import com.example.pusatara_app.view.detail.DetailActivity
+import com.example.pusatara_app.view.detail.DetailMediaActivity
 
 class MediaAdapter : PagingDataAdapter<DataItem, MediaAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
@@ -49,7 +49,7 @@ class MediaAdapter : PagingDataAdapter<DataItem, MediaAdapter.ListViewHolder>(DI
             mediaDescription.text = media.content
 
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, DetailActivity::class.java)
+                val intent = Intent(itemView.context, DetailMediaActivity::class.java)
                 intent.putExtra("media_id", media.id)
 
                 val optionsCompat: ActivityOptionsCompat =
