@@ -1,12 +1,12 @@
 package com.example.pusatara_app.view.profile
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -30,7 +30,7 @@ class ProfileActivity : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.profile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        theme()
+//        theme()
         userPreferences = UserPreferences.getInstance(applicationContext)
 
         logoutButton = binding.logoutButton

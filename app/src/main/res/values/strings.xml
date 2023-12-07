@@ -93,4 +93,7 @@
     <!-- menu home toolbar -->
     <string name="search_btn">Search</string>
     <string name="profile_btn">Profile</string>
+
+    <!--Item Glossary-->
+    <string name="tv_glossary_name">Glossary Name</string>
 </resources>
