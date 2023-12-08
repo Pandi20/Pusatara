@@ -1,21 +1,21 @@
-package com.example.pusatara_app.view.home
+package com.example.pusatara_app.view.scan
 
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pusatara_app.databinding.ActivityUploadScanBinding
+import com.example.pusatara_app.databinding.ActivityScanOutputBinding
 
 @Suppress("DEPRECATION")
-class UploadScanActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityUploadScanBinding
+class ScanOutputActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityScanOutputBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUploadScanBinding.inflate(layoutInflater)
+        binding = ActivityScanOutputBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Upload Scan"
+        supportActionBar?.title = "Scan output"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -25,6 +25,7 @@ class UploadScanActivity : AppCompatActivity() {
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             onBackPressed()

@@ -10,13 +10,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.pusatara_app.R
+import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.FragmentHomeBinding
 import com.example.pusatara_app.view.profile.ProfileActivity
+import com.example.pusatara_app.view.scan.UploadScanActivity
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
+    private lateinit var userPreferences: UserPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +36,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        userPreferences = UserPreferences.getInstance(requireContext())
+
         val mainActivity = activity as AppCompatActivity
         val toolbar = mainActivity.supportActionBar?.apply {
             title = "Home"
@@ -39,6 +48,29 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireActivity(), UploadScanActivity::class.java)
             startActivity(intent)
         }
+
+        lifecycleScope.launch {
+            val userName = userPreferences.getUsername().first()
+            if (!userName.isNullOrBlank()) {
+                binding.usernameHome.text = "$userName"
+            }
+        }
+
+        binding.navToBatikGlossary.setOnClickListener {
+            glossaryFragment()
+        }
+
+        binding.navToSongketGlossary.setOnClickListener {
+            glossaryFragment()
+        }
+    }
+
+    private fun navigateToGlossaryFragment() {
+        findNavController().navigate(R.id.action_home_to_glossary)
+    }
+
+    private fun glossaryFragment() {
+        navigateToGlossaryFragment()
     }
 
     @Deprecated("Deprecated in Java")

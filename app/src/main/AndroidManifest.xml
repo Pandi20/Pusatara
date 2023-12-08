@@ -18,16 +18,16 @@
             android:name=".view.detail.DetailMediaActivity"
             android:exported="false" />
         <activity
-            android:name=".view.home.ScanOutputActivity"
+            android:name=".view.scan.ScanOutputActivity"
             android:exported="false" />
         <activity
-            android:name=".view.home.UploadScanActivity"
+            android:name=".view.scan.UploadScanActivity"
             android:exported="false" />
         <activity
             android:name=".view.media.AddMediaActivity"
             android:exported="false" />
         <activity
-            android:name=".view.detail.DetailActivity"
+            android:name=".view.detail.DetailGlossaryActivity"
             android:exported="false" />
         <activity
             android:name=".view.profile.ProfileActivity"

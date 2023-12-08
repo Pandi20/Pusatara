@@ -3,14 +3,14 @@ package com.example.pusatara_app.view.detail
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pusatara_app.databinding.ActivityDetailBinding
+import com.example.pusatara_app.databinding.ActivityDetailGlossaryBinding
 
 @Suppress("DEPRECATION")
-class DetailActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityDetailBinding
+class DetailGlossaryActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityDetailGlossaryBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailBinding.inflate(layoutInflater)
+        binding = ActivityDetailGlossaryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.title = "Glossary Detail"

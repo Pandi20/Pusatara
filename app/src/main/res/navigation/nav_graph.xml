@@ -9,13 +9,20 @@
         android:id="@+id/menuHome"
         android:name="com.example.pusatara_app.view.home.HomeFragment"
         android:label="@string/bottombar_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_glossary"
+            app:destination="@id/menuGlossary"
+            app:popUpTo="@id/menuHome"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/menuGlossary"
         android:name="com.example.pusatara_app.view.glossary.GlossaryFragment"
         android:label="@string/bottombar_glossary"
-        tools:layout="@layout/fragment_glossary" />
+        tools:layout="@layout/fragment_glossary" >
+    </fragment>
 
     <fragment
         android:id="@+id/menuMedia"
