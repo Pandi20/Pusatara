@@ -6,26 +6,26 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pusatara_app.R
 import com.example.pusatara_app.data.api.retrofit.ApiConfig
 import com.example.pusatara_app.data.di.MediaRepository
 import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.FragmentMediaBinding
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class MediaFragment : Fragment() {
-    private lateinit var binding : FragmentMediaBinding
+    private lateinit var binding: FragmentMediaBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var mediaAdapter: MediaAdapter
-    private lateinit var userPreferences: UserPreferences
-    private lateinit var mediaViewModel: MediaViewModel
     private var token: String? = null
-    private var backPressedTime: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,20 +52,33 @@ class MediaFragment : Fragment() {
         mediaAdapter = MediaAdapter()
         recyclerView.adapter = mediaAdapter
 
-
         binding.fabAdd.setOnClickListener {
             val intent = Intent(requireContext(), AddMediaActivity::class.java)
             startActivity(intent)
         }
 
-        val mediaRepository = MediaRepository(ApiConfig.getApiService(), token?: "")
-        mediaViewModel = ViewModelProvider(this, MediaViewModelFactory(mediaRepository))[MediaViewModel::class.java]
-        mediaViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MediaViewModel::class.java]
-
-        mediaViewModel.mediaList.observe(viewLifecycleOwner) { mediaList ->
-            mediaAdapter.submitData(lifecycle, mediaList)
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            val mediaRepository = MediaRepository(ApiConfig.getApiService(), token ?: "")
+            mediaRepository.getMediaPaging()
+                .onEach {
+                    binding.swipeRefreshLayout.isRefreshing = false
+                    mediaAdapter.submitData(lifecycle, it)
+                    showToast(getString(R.string.media_updated))
+                }
+                .launchIn(viewLifecycleOwner.lifecycleScope)
         }
 
+        val mediaRepository = MediaRepository(ApiConfig.getApiService(), token ?: "")
+        mediaRepository.getMediaPaging()
+            .onEach {
+                mediaAdapter.submitData(lifecycle, it)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+
         return binding.root
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }

@@ -28,6 +28,9 @@ data class DetailMediaResponse(
 	@field:SerializedName("isPoll")
 	val isPoll: Boolean? = null,
 
+	@field:SerializedName("likesCount")
+	val likesCount: Int? = null,
+
 	@field:SerializedName("updatedAt")
 	val updatedAt: String? = null,
 

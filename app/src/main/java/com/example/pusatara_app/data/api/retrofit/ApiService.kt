@@ -59,6 +59,7 @@ interface ApiService {
         @Path("id") mediaId: Int
     ): DetailMediaResponse
 
+    @FormUrlEncoded
     @POST("posts/like")
     suspend fun likePost(
         @Header("Authorization") token: String,

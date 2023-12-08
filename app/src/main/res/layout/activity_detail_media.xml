@@ -50,7 +50,7 @@
 
             <ImageView
                 android:id="@+id/iv_detail_photo"
-                android:transitionName="story_photo"
+                android:transitionName="media_photo"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"

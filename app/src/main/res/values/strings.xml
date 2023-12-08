@@ -72,6 +72,7 @@
 
     <!-- Fragment Media-->
     <string name="media_title">Media Title</string>
+    <string name="media_updated">Media has been Updated</string>
     <string name="media_desc">Media Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptatem blanditiis qui praesentium sequi non delectus beatae, impedit minus, ab illum aspernatur recusandae, molestias vel.</string>
 
     <!-- Add Media Activity-->

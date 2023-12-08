@@ -38,7 +38,10 @@ data class DataItem(
 	val content: String? = null,
 
 	@field:SerializedName("isPoll")
-	val isPoll: Boolean? = null,
+	var isPoll: Boolean? = null,
+
+	@field:SerializedName("likesCount")
+	val likesCount: Int? = null,
 
 	@field:SerializedName("user")
 	val user: User? = null
