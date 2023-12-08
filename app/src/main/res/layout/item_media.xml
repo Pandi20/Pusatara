@@ -37,7 +37,8 @@
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_person"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent" />
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:tint="@color/black" />
 
         <TextView
             android:id="@+id/tv_media_username"

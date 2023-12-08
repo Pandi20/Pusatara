@@ -31,6 +31,10 @@ class UploadScanActivity : AppCompatActivity() {
         binding.btnCameraScan.setOnClickListener {
             startCamera()
         }
+
+        binding.btnUploadScan.setOnClickListener {
+//            uploadScan()
+        }
     }
 
     private fun startGallery() {
