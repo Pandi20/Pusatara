@@ -5,14 +5,20 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pusatara_app.data.api.response.ScanResponse
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivityScanOutputBinding
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 @Suppress("DEPRECATION")
 class ScanOutputActivity : AppCompatActivity() {
     private lateinit var binding : ActivityScanOutputBinding
     private lateinit var adapter: ScanOutputAdapter
+    private lateinit var userPreferences: UserPreferences
+    private lateinit var viewModel: UploadScanViewModel
+    private var token: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScanOutputBinding.inflate(layoutInflater)
@@ -21,22 +27,12 @@ class ScanOutputActivity : AppCompatActivity() {
         supportActionBar?.title = "Scan output"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-//        val scanResponse: ScanResponse? = intent.getParcelableExtra("scanResponse")
-//        showScanResults(scanResponse)
-    }
-
-    private fun showScanResults(scanResponse: ScanResponse?) {
-        if (scanResponse != null) {
-            val scanResults = scanResponse.scanResponse
-            if (scanResults.isNotEmpty()) {
-                // Initialize and set up the RecyclerView
-                adapter = ScanOutputAdapter(scanResults)
-                binding.rvResultScan.layoutManager = LinearLayoutManager(this)
-                binding.rvResultScan.adapter = adapter
-            }
-        } else {
-            showToast("Failed to retrieve scan results.")
+        userPreferences = UserPreferences.getInstance(applicationContext)
+        lifecycleScope.launch {
+            token = userPreferences.getToken().first()
         }
+
+        viewModel = ViewModelProvider(this)[UploadScanViewModel::class.java]
     }
 
     private fun showLoading(isLoading: Boolean) {

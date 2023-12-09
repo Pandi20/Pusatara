@@ -5,11 +5,10 @@ import com.example.pusatara_app.data.api.response.LikePostResponse
 import com.example.pusatara_app.data.api.response.LoginResponse
 import com.example.pusatara_app.data.api.response.MediaResponse
 import com.example.pusatara_app.data.api.response.RegisterResponse
-import com.example.pusatara_app.data.api.response.ScanResponse
+import com.example.pusatara_app.data.api.response.ScanResponseItem
 import com.example.pusatara_app.data.api.response.UploadMediaResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -73,5 +72,5 @@ interface ApiService {
     suspend fun uploadScan(
         @Header("Authorization") token: String,
         @Part image: MultipartBody.Part
-    ) : Response<ScanResponse>
+    ) : List<ScanResponseItem>
 }

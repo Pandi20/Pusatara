@@ -1,5 +1,6 @@
 package com.example.pusatara_app.view.scan
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -64,10 +65,11 @@ class UploadScanActivity : AppCompatActivity() {
         viewModel.uploadSuccess.observe(this) { uploadSuccess ->
             if (uploadSuccess) {
                 showToast("Image uploaded successfully")
-                // Add any additional logic after successful upload if needed
+                val intent = Intent(this, ScanOutputActivity::class.java)
+                startActivity(intent)
+                finish()
             } else {
                 showToast("Image upload failed")
-                // Handle the case where the image upload failed
             }
         }
     }

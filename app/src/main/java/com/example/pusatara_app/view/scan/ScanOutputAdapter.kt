@@ -27,15 +27,15 @@ class ScanOutputAdapter(private val scanOutput: List<ScanResponseItem>) :
 
         @SuppressLint("SetTextI18n")
         fun bind(scanOutput: ScanResponseItem) {
-            binding.tvBatikName.text = scanOutput.className
+            binding.tvResultName.text = scanOutput.className
 
             val probabilityPercent = (scanOutput.probability as? Double)?.times(100)?.toInt() ?: 0
             binding.tvResultPercent.text = "$probabilityPercent%"
 
             when {
-                probabilityPercent < 35 -> binding.tvResultPercent.setTextColor(Color.RED)
-                probabilityPercent in 35..65 -> binding.tvResultPercent.setTextColor(Color.YELLOW)
-                probabilityPercent in 65..100 -> binding.tvResultPercent.setTextColor(Color.GREEN)
+                probabilityPercent < 33 -> binding.tvResultPercent.setTextColor(Color.RED)
+                probabilityPercent in 34..66 -> binding.tvResultPercent.setTextColor(Color.YELLOW)
+                probabilityPercent in 67..100 -> binding.tvResultPercent.setTextColor(Color.GREEN)
                 else -> binding.tvResultPercent.setTextColor(Color.BLACK)
             }
         }
