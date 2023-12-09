@@ -9,13 +9,27 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivityUploadScanBinding
 import com.example.pusatara_app.getImageUri
+import com.example.pusatara_app.reduceFileImage
+import com.example.pusatara_app.uriToFile
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 
 @Suppress("DEPRECATION")
 class UploadScanActivity : AppCompatActivity() {
     private lateinit var binding : ActivityUploadScanBinding
+    private lateinit var userPreferences : UserPreferences
     private var currentImageUri: Uri? = null
+    private var token: String? = null
+    private lateinit var viewModel: UploadScanViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadScanBinding.inflate(layoutInflater)
@@ -23,6 +37,13 @@ class UploadScanActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Upload Scan"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        userPreferences = UserPreferences.getInstance(applicationContext)
+        viewModel = ViewModelProvider(this)[UploadScanViewModel::class.java]
+
+        lifecycleScope.launch {
+            token = userPreferences.getToken().first()
+        }
 
         binding.btnGalleryScan.setOnClickListener {
             startGallery()
@@ -33,7 +54,21 @@ class UploadScanActivity : AppCompatActivity() {
         }
 
         binding.btnUploadScan.setOnClickListener {
-//            uploadScan()
+            uploadScanImage()
+        }
+
+        viewModel.loading.observe(this) { isLoading ->
+            showLoading(isLoading)
+        }
+
+        viewModel.uploadSuccess.observe(this) { uploadSuccess ->
+            if (uploadSuccess) {
+                showToast("Image uploaded successfully")
+                // Add any additional logic after successful upload if needed
+            } else {
+                showToast("Image upload failed")
+                // Handle the case where the image upload failed
+            }
         }
     }
 
@@ -69,6 +104,23 @@ class UploadScanActivity : AppCompatActivity() {
         currentImageUri?.let {
             Log.d("Image URI", "showImage: $it")
             binding.ivUploadScan.setImageURI(it)
+        }
+    }
+
+    private fun uploadScanImage() {
+        lifecycleScope.launchWhenCreated {
+
+            currentImageUri?.let { uri ->
+                val imageFile = uriToFile(uri, this@UploadScanActivity).reduceFileImage()
+                Log.d("Image File", "showImage: ${imageFile.path}")
+
+                showLoading(true)
+
+                val imageRequestBody = imageFile.asRequestBody("image/jpeg".toMediaType())
+                val imagePart = MultipartBody.Part.createFormData("image", imageFile.name, imageRequestBody)
+
+                viewModel.uploadScanImage("Bearer $token", imagePart)
+            }
         }
     }
 

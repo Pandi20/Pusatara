@@ -5,11 +5,14 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pusatara_app.data.api.response.ScanResponse
 import com.example.pusatara_app.databinding.ActivityScanOutputBinding
 
 @Suppress("DEPRECATION")
 class ScanOutputActivity : AppCompatActivity() {
     private lateinit var binding : ActivityScanOutputBinding
+    private lateinit var adapter: ScanOutputAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScanOutputBinding.inflate(layoutInflater)
@@ -17,6 +20,23 @@ class ScanOutputActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Scan output"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+//        val scanResponse: ScanResponse? = intent.getParcelableExtra("scanResponse")
+//        showScanResults(scanResponse)
+    }
+
+    private fun showScanResults(scanResponse: ScanResponse?) {
+        if (scanResponse != null) {
+            val scanResults = scanResponse.scanResponse
+            if (scanResults.isNotEmpty()) {
+                // Initialize and set up the RecyclerView
+                adapter = ScanOutputAdapter(scanResults)
+                binding.rvResultScan.layoutManager = LinearLayoutManager(this)
+                binding.rvResultScan.adapter = adapter
+            }
+        } else {
+            showToast("Failed to retrieve scan results.")
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -33,4 +53,5 @@ class ScanOutputActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
 }

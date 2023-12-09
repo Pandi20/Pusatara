@@ -9,6 +9,7 @@ import com.example.pusatara_app.data.api.response.ScanResponse
 import com.example.pusatara_app.data.api.response.UploadMediaResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -69,7 +70,8 @@ interface ApiService {
 
     @Multipart
     @POST("ai")
-    suspend fun postScan(
-        @Part("image") image: MultipartBody.Part
-    ) : ScanResponse
+    suspend fun uploadScan(
+        @Header("Authorization") token: String,
+        @Part image: MultipartBody.Part
+    ) : Response<ScanResponse>
 }
