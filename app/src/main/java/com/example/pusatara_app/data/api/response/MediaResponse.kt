@@ -43,6 +43,9 @@ data class DataItem(
 	@field:SerializedName("likesCount")
 	val likesCount: Int? = null,
 
+	@field:SerializedName("isLiked")
+	val isLiked: Int? = null,
+
 	@field:SerializedName("user")
 	val user: User? = null
 )

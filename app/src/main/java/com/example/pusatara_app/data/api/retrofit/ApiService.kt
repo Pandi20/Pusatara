@@ -9,6 +9,7 @@ import com.example.pusatara_app.data.api.response.ScanResponseItem
 import com.example.pusatara_app.data.api.response.UploadMediaResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -65,6 +66,13 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Field("userId") userId: Int,
         @Field("postId") postId: Int
+    ): LikePostResponse
+
+    @DELETE("posts/unlike")
+    suspend fun unlikePost(
+        @Header("Authorization") token: String,
+        @Query("userId") userId: Int,
+        @Query("postId") postId: Int
     ): LikePostResponse
 
     @Multipart

@@ -68,22 +68,44 @@ class MediaAdapter : PagingDataAdapter<DataItem, MediaAdapter.ListViewHolder>(DI
             mediaDescription.text = media.content
             countLike.text = media.likesCount.toString()
 
+            if (media.isLiked == 1) {
+                likeButton.setImageResource(R.drawable.ic_like)
+            } else {
+                likeButton.setImageResource(R.drawable.ic_like_border)
+            }
+
             likeButton.setOnClickListener {
                 GlobalScope.launch(Dispatchers.Main) {
                     val userId = userPreferences.getUserId().first()
                     try {
                         val apiService = ApiConfig.getApiService()
 
-                        val successResponse = apiService.likePost("Bearer $token", userId!!, media.id!!)
-                        if (successResponse.message == "Post liked successfully!") {
-                            likeButton.setImageResource(R.drawable.ic_like)
+                        if (media.isLiked == 1) {
+                            // Unlike Post
+                            val unlikeResponse = apiService.unlikePost("Bearer $token", userId!!, media.id!!)
+                            if (unlikeResponse.message == "Post unliked successfully!") {
+                                likeButton.setImageResource(R.drawable.ic_like_border)
 
-                            val updatedMedia = apiService.getMediaById("Bearer $token",media.id)
-                            countLike.text = updatedMedia.likesCount.toString()
+                                val updatedMedia = apiService.getMediaById("Bearer $token", media.id)
+                                countLike.text = updatedMedia.likesCount.toString()
 
-                            Log.d("MediaAdapter", "berhasil like")
+                                Log.d("MediaAdapter", "berhasil unlike")
+                            } else {
+                                Log.d("MediaAdapter", "Gagal unlike")
+                            }
                         } else {
-                            Log.d("MediaAdapter", "Gagal like")
+                            // Like Post
+                            val likeResponse = apiService.likePost("Bearer $token", userId!!, media.id!!)
+                            if (likeResponse.message == "Post liked successfully!") {
+                                likeButton.setImageResource(R.drawable.ic_like)
+
+                                val updatedMedia = apiService.getMediaById("Bearer $token", media.id)
+                                countLike.text = updatedMedia.likesCount.toString()
+
+                                Log.d("MediaAdapter", "berhasil like")
+                            } else {
+                                Log.d("MediaAdapter", "Gagal like")
+                            }
                         }
 
                     } catch (e: HttpException) {
