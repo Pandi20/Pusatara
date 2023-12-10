@@ -83,9 +83,8 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.search_btn -> {
-                // Handle the settings action
-                // Example: show a toast
-                // Toast.makeText(requireContext(), "Settings clicked", Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireActivity(), SearchActivity::class.java)
+                startActivity(intent)
                 return true
             }
             R.id.profile_btn -> {

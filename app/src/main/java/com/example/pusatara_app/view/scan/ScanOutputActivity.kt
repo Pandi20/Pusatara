@@ -1,12 +1,14 @@
 package com.example.pusatara_app.view.scan
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivityScanOutputBinding
 import kotlinx.coroutines.flow.first
@@ -24,7 +26,7 @@ class ScanOutputActivity : AppCompatActivity() {
         binding = ActivityScanOutputBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Scan output"
+        supportActionBar?.title = "Scan Output"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         userPreferences = UserPreferences.getInstance(applicationContext)
@@ -32,7 +34,23 @@ class ScanOutputActivity : AppCompatActivity() {
             token = userPreferences.getToken().first()
         }
 
+        adapter = ScanOutputAdapter()
+
         viewModel = ViewModelProvider(this)[UploadScanViewModel::class.java]
+
+        val layoutManager = LinearLayoutManager(this)
+        binding.rvResultScan.layoutManager = layoutManager
+        binding.rvResultScan.adapter = adapter
+
+        viewModel.scanResults.observe(this) { scanResults ->
+            if (scanResults.isNullOrEmpty()) {
+                // Handle empty state, show a message or perform appropriate action
+                Log.d("ScanOutputActivity", "Scan results are empty")
+            } else {
+                // Update the adapter with the new scan results
+                adapter.setData(scanResults)
+            }
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -49,5 +67,4 @@ class ScanOutputActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
 }

@@ -17,6 +17,9 @@ class UploadScanViewModel : ViewModel() {
     private val _uploadSuccess = MutableLiveData<Boolean>()
     val uploadSuccess: LiveData<Boolean> get() = _uploadSuccess
 
+    private val _scanResults = MutableLiveData<List<ScanResponseItem>>()
+    val scanResults: LiveData<List<ScanResponseItem>> get() = _scanResults
+
     fun uploadScanImage(token: String, imagePart: MultipartBody.Part) {
         viewModelScope.launch {
             try {
@@ -27,6 +30,7 @@ class UploadScanViewModel : ViewModel() {
                 // Check if the responseList is not empty or handle accordingly
                 if (responseList.isNotEmpty()) {
                     Log.e("UploadViewModel", "Uploaded successfully")
+                    _scanResults.postValue(responseList)
                     _uploadSuccess.value = true
                 } else {
                     Log.e("UploadViewModel", "Upload failed: Empty response")

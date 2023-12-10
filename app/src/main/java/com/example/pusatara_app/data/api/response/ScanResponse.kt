@@ -11,7 +11,7 @@ data class ScanResponse(
 data class ScanResponseItem(
 
 	@field:SerializedName("probability")
-	val probability: Double,
+	val probability: Double?,
 
 	@field:SerializedName("className")
 	val className: String
