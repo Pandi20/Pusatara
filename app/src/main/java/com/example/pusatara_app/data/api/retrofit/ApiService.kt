@@ -64,14 +64,12 @@ interface ApiService {
     @POST("posts/like")
     suspend fun likePost(
         @Header("Authorization") token: String,
-        @Field("userId") userId: Int,
         @Field("postId") postId: Int
     ): LikePostResponse
 
     @DELETE("posts/unlike")
     suspend fun unlikePost(
         @Header("Authorization") token: String,
-        @Query("userId") userId: Int,
         @Query("postId") postId: Int
     ): LikePostResponse
 

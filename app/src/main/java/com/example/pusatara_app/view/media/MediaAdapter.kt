@@ -76,32 +76,31 @@ class MediaAdapter : PagingDataAdapter<DataItem, MediaAdapter.ListViewHolder>(DI
 
             likeButton.setOnClickListener {
                 GlobalScope.launch(Dispatchers.Main) {
-                    val userId = userPreferences.getUserId().first()
                     try {
                         val apiService = ApiConfig.getApiService()
 
                         if (media.isLiked == 1) {
                             // Unlike Post
-                            val unlikeResponse = apiService.unlikePost("Bearer $token", userId!!, media.id!!)
+                            val unlikeResponse = apiService.unlikePost("Bearer $token", media.id!!)
                             if (unlikeResponse.message == "Post unliked successfully!") {
                                 likeButton.setImageResource(R.drawable.ic_like_border)
 
                                 val updatedMedia = apiService.getMediaById("Bearer $token", media.id)
                                 countLike.text = updatedMedia.likesCount.toString()
-
+                                media.isLiked = 0
                                 Log.d("MediaAdapter", "berhasil unlike")
                             } else {
                                 Log.d("MediaAdapter", "Gagal unlike")
                             }
                         } else {
                             // Like Post
-                            val likeResponse = apiService.likePost("Bearer $token", userId!!, media.id!!)
+                            val likeResponse = apiService.likePost("Bearer $token", media.id!!)
                             if (likeResponse.message == "Post liked successfully!") {
                                 likeButton.setImageResource(R.drawable.ic_like)
 
                                 val updatedMedia = apiService.getMediaById("Bearer $token", media.id)
                                 countLike.text = updatedMedia.likesCount.toString()
-
+                                media.isLiked = 1
                                 Log.d("MediaAdapter", "berhasil like")
                             } else {
                                 Log.d("MediaAdapter", "Gagal like")
@@ -124,7 +123,7 @@ class MediaAdapter : PagingDataAdapter<DataItem, MediaAdapter.ListViewHolder>(DI
                         Pair(cardImg, "card_photo"),
                         Pair(mediaImg, "media_photo"),
                         Pair(mediaAvatar, "avatar"),
-                        Pair(mediaUsername, "name"),
+                        Pair(mediaUsername, "username"),
                         Pair(titleMedia, "title"),
                         Pair(mediaDescription, "description"),
                     )
