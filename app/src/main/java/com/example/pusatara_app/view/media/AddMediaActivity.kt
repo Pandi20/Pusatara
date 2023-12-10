@@ -1,5 +1,6 @@
 package com.example.pusatara_app.view.media
 
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
+import com.example.pusatara_app.MainActivity
 import com.example.pusatara_app.R
 import com.example.pusatara_app.data.api.response.UploadMediaResponse
 import com.example.pusatara_app.data.api.retrofit.ApiConfig
@@ -116,7 +118,7 @@ class AddMediaActivity : AppCompatActivity() {
                     showLoading(false)
 
                     if (successResponse.message == "Post created successfully!") {
-                        finish()
+                        navigateToMediaFragment()
                     }
                 } catch (e: HttpException) {
                     val errorBody = e.response()?.errorBody()?.string()
@@ -143,4 +145,16 @@ class AddMediaActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun navigateToMediaFragment() {
+        // Tutup MediaFragment yang sebelumnya (jika ada)
+        val intentClose = Intent(this, MainActivity::class.java)
+        intentClose.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intentClose)
+
+        // Buka MediaFragment yang baru
+        val intentOpen = Intent(this, MainActivity::class.java)
+        intentOpen.putExtra("fragmentToLoad", MediaFragment.TAG)
+        startActivity(intentOpen)
+        finish()
+    }
 }

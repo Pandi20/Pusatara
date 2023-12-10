@@ -27,6 +27,10 @@ class MediaFragment : Fragment() {
     private lateinit var mediaAdapter: MediaAdapter
     private var token: String? = null
 
+    companion object {
+        const val TAG = "MediaFragment"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
