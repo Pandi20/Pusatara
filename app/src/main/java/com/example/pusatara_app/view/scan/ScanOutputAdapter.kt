@@ -13,6 +13,16 @@ import com.example.pusatara_app.databinding.ItemScanOutputBinding
 class ScanOutputAdapter :
     ListAdapter<ScanResponseItem, ScanOutputAdapter.ScanOutputViewHolder>(DiffCallback()) {
 
+    private var onItemClickCallback: OnItemClickCallback? = null
+
+    interface OnItemClickCallback {
+        fun onItemClicked(scanItem: ScanResponseItem)
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScanOutputViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemScanOutputBinding.inflate(inflater, parent, false)
@@ -40,10 +50,6 @@ class ScanOutputAdapter :
                 else -> binding.tvResultPercent.setTextColor(Color.BLACK)
             }
         }
-    }
-
-    fun setData(newData: List<ScanResponseItem>) {
-        submitList(newData)
     }
 
     private class DiffCallback : DiffUtil.ItemCallback<ScanResponseItem>() {

@@ -1,10 +1,9 @@
 package com.example.pusatara_app.view.scan
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -21,6 +20,7 @@ class ScanOutputActivity : AppCompatActivity() {
     private lateinit var userPreferences: UserPreferences
     private lateinit var viewModel: UploadScanViewModel
     private var token: String? = null
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScanOutputBinding.inflate(layoutInflater)
@@ -29,35 +29,23 @@ class ScanOutputActivity : AppCompatActivity() {
         supportActionBar?.title = "Scan Output"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        viewModel = ViewModelProvider(this)[UploadScanViewModel::class.java]
+
         userPreferences = UserPreferences.getInstance(applicationContext)
         lifecycleScope.launch {
             token = userPreferences.getToken().first()
+            token = intent.getStringExtra("token")
         }
 
         adapter = ScanOutputAdapter()
-
-        viewModel = ViewModelProvider(this)[UploadScanViewModel::class.java]
-
-        val layoutManager = LinearLayoutManager(this)
-        binding.rvResultScan.layoutManager = layoutManager
+        binding.rvResultScan.layoutManager = LinearLayoutManager(this)
         binding.rvResultScan.adapter = adapter
 
+        // Observe the scan results and update the adapter when the list changes
         viewModel.scanResults.observe(this) { scanResults ->
-            if (scanResults.isNullOrEmpty()) {
-                // Handle empty state, show a message or perform appropriate action
-                Log.d("ScanOutputActivity", "Scan results are empty")
-            } else {
-                // Update the adapter with the new scan results
-                adapter.setData(scanResults)
-            }
+            Log.d("ViewModelInScanOutput", "Scan Results: $scanResults")
+            adapter.submitList(scanResults)
         }
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

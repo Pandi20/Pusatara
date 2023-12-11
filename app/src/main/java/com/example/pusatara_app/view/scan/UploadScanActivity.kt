@@ -66,11 +66,16 @@ class UploadScanActivity : AppCompatActivity() {
             if (uploadSuccess) {
                 showToast("Image uploaded successfully")
                 val intent = Intent(this, ScanOutputActivity::class.java)
+                intent.putExtra("token", token)
                 startActivity(intent)
                 finish()
             } else {
                 showToast("Image upload failed")
             }
+        }
+
+        viewModel.scanResults.observe(this) { scanResults ->
+            Log.d("ViewModelInScanOutput", "Scan Results: $scanResults")
         }
     }
 
