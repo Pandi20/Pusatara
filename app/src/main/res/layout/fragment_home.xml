@@ -143,10 +143,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/fab_scan"
-        android:textColor="?attr/colorOnTertiary"
         app:icon="@drawable/baseline_camera_24"
-        app:iconTint="?attr/colorOnTertiary"
-        app:backgroundTint="?attr/colorTertiary"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.FloatingActionButton.SquareWithRadius" />
 
     <ProgressBar
