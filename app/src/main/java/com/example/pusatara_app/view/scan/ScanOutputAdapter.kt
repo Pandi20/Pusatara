@@ -1,9 +1,10 @@
 package com.example.pusatara_app.view.scan
 
 import android.annotation.SuppressLint
-import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,16 +13,6 @@ import com.example.pusatara_app.databinding.ItemScanOutputBinding
 
 class ScanOutputAdapter :
     ListAdapter<ScanResponseItem, ScanOutputAdapter.ScanOutputViewHolder>(DiffCallback()) {
-
-    private var onItemClickCallback: OnItemClickCallback? = null
-
-    interface OnItemClickCallback {
-        fun onItemClicked(scanItem: ScanResponseItem)
-    }
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScanOutputViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -38,17 +29,19 @@ class ScanOutputAdapter :
 
         @SuppressLint("SetTextI18n")
         fun bind(scanOutput: ScanResponseItem) {
+            Log.d("ScanOutputAdapter", "ClassName: ${scanOutput.className}, Probability: ${scanOutput.probability}")
             binding.tvResultName.text = scanOutput.className
 
-            val probabilityPercent = (scanOutput.probability?.times(100))?.toInt() ?: 0
+            val probabilityPercent = scanOutput.probability
             binding.tvResultPercent.text = "$probabilityPercent%"
 
-            when {
-                probabilityPercent < 33 -> binding.tvResultPercent.setTextColor(Color.RED)
-                probabilityPercent in 34..66 -> binding.tvResultPercent.setTextColor(Color.YELLOW)
-                probabilityPercent in 67..100 -> binding.tvResultPercent.setTextColor(Color.GREEN)
-                else -> binding.tvResultPercent.setTextColor(Color.BLACK)
+            val textColor = when {
+                probabilityPercent < 33 -> android.R.color.holo_red_light
+                probabilityPercent in 34.0..66.0 -> android.R.color.holo_orange_light
+                probabilityPercent in 67.0..100.0 -> android.R.color.holo_green_light
+                else -> android.R.color.black
             }
+            binding.tvResultPercent.setTextColor(ContextCompat.getColor(itemView.context, textColor))
         }
     }
 

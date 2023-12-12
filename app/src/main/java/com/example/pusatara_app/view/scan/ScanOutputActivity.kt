@@ -34,17 +34,17 @@ class ScanOutputActivity : AppCompatActivity() {
         userPreferences = UserPreferences.getInstance(applicationContext)
         lifecycleScope.launch {
             token = userPreferences.getToken().first()
-            token = intent.getStringExtra("token")
         }
 
         adapter = ScanOutputAdapter()
-        binding.rvResultScan.layoutManager = LinearLayoutManager(this)
+        binding.rvResultScan.layoutManager = LinearLayoutManager(this@ScanOutputActivity)
         binding.rvResultScan.adapter = adapter
 
-        // Observe the scan results and update the adapter when the list changes
-        viewModel.scanResults.observe(this) { scanResults ->
-            Log.d("ViewModelInScanOutput", "Scan Results: $scanResults")
-            adapter.submitList(scanResults)
+        viewModel.scanResults.observe(this@ScanOutputActivity) { scanResults ->
+            Log.d("scanResults", "Scan Results: $scanResults")
+            if (scanResults.isNotEmpty()) {
+                adapter.submitList(scanResults)
+            }
         }
     }
 
