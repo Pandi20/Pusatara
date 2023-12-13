@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pusatara_app.data.api.response.ScanResponseItem
+import com.example.pusatara_app.data.api.response.ScanResponse
 import com.example.pusatara_app.data.api.retrofit.ApiConfig
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
@@ -17,20 +17,20 @@ class UploadScanViewModel : ViewModel() {
     private val _uploadSuccess = MutableLiveData<Boolean>()
     val uploadSuccess: LiveData<Boolean> get() = _uploadSuccess
 
-    private val _scanResults = MutableLiveData<List<ScanResponseItem>>()
-    val scanResults: LiveData<List<ScanResponseItem>> get() = _scanResults
+    private val _scanResponse = MutableLiveData<List<ScanResponse>>()
+    val scanResponse: LiveData<List<ScanResponse>> get() = _scanResponse
 
     fun uploadScanImage(token: String, imagePart: MultipartBody.Part) {
         viewModelScope.launch {
             try {
                 _loading.value = true
 
-                val responseList: List<ScanResponseItem> = ApiConfig.getApiService().uploadScan(token, imagePart)
+                val responseList: List<ScanResponse> = ApiConfig.getApiService().uploadScan(token, imagePart)
 
                 // Check if the responseList is not empty or handle accordingly
                 if (responseList.isNotEmpty()) {
                     Log.e("UploadViewModel", "Uploaded successfully")
-                    _scanResults.postValue(responseList)
+                    _scanResponse.postValue(responseList)
                     _uploadSuccess.value = true
                 } else {
                     Log.e("UploadViewModel", "Upload failed: Empty response")

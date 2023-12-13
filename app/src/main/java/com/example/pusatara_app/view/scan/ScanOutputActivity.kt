@@ -40,10 +40,10 @@ class ScanOutputActivity : AppCompatActivity() {
         binding.rvResultScan.layoutManager = LinearLayoutManager(this@ScanOutputActivity)
         binding.rvResultScan.adapter = adapter
 
-        viewModel.scanResults.observe(this@ScanOutputActivity) { scanResults ->
-            Log.d("scanResults", "Scan Results: $scanResults")
-            if (scanResults.isNotEmpty()) {
-                adapter.submitList(scanResults)
+        viewModel.scanResponse.observe(this@ScanOutputActivity) { scanResponse ->
+            Log.d("scanResults", "Scan Results: $scanResponse")
+            if (scanResponse.isNotEmpty()) {
+                adapter.submitList(scanResponse)
             }
         }
     }

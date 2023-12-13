@@ -72,10 +72,6 @@ class UploadScanActivity : AppCompatActivity() {
                 showToast("Image upload failed")
             }
         }
-
-        viewModel.scanResults.observe(this) { scanResults ->
-            Log.d("ViewModel", "Scan Results: $scanResults")
-        }
     }
 
     private fun startGallery() {

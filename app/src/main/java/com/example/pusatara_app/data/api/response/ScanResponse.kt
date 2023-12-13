@@ -4,17 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 data class ScanResponse(
 
-	@field:SerializedName("ScanResponse")
-	val scanResponse: List<ScanResponseItem>
-)
-
-data class ScanResponseItem(
-	@field:SerializedName("rawProbability")
-	val rawProbability: Double,
+	@field:SerializedName("className")
+	val className: String,
 
 	@field:SerializedName("probability")
 	val probability: Double,
 
-	@field:SerializedName("className")
-	val className: String
+	@field:SerializedName("rawProbability")
+	val rawProbability: Double
+
 )
