@@ -83,11 +83,6 @@
     <string name="add_media_desc">Description</string>
     <string name="empty_image_warning">Please select an image file first</string>
 
-    <!-- Scan Output Activity-->
-    <string name="heading_scan_result">Your Result</string>
-    <string name="tv_scan_result">Batik or Songket Name</string>
-    <string name="tv_scan_desc">Batik or Songket Description</string>
-
     <!-- Item Batik Songket-->
     <string name="tv_batik_name">Batik Name</string>
     <string name="tv_batik_desc">Batik Description</string>
@@ -101,4 +96,7 @@
 
     <!--Item Glossary-->
     <string name="tv_glossary_name">Glossary Name</string>
+
+    <!-- Upload Scan Activity-->
+    <string name="tv_title_result">Your Result</string>
 </resources>

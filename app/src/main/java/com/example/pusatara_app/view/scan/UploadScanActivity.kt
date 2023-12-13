@@ -83,18 +83,22 @@ class UploadScanActivity : AppCompatActivity() {
                 adapter.submitList(scanResponse)
             }
         }
+
+        binding.tvTitleResult.visibility = View.GONE
     }
 
     private fun hideButtons() {
         binding.btnGalleryScan.visibility = View.GONE
         binding.btnCameraScan.visibility = View.GONE
         binding.btnUploadScan.visibility = View.GONE
+        binding.tvTitleResult.visibility = View.VISIBLE
     }
 
     private fun showButtons() {
         binding.btnGalleryScan.visibility = View.VISIBLE
         binding.btnCameraScan.visibility = View.VISIBLE
         binding.btnUploadScan.visibility = View.VISIBLE
+        binding.tvTitleResult.visibility = View.GONE
     }
 
     private fun startGallery() {
