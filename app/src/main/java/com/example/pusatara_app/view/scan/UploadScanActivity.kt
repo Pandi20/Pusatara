@@ -1,6 +1,5 @@
 package com.example.pusatara_app.view.scan
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivityUploadScanBinding
 import com.example.pusatara_app.getImageUri
@@ -29,6 +29,7 @@ class UploadScanActivity : AppCompatActivity() {
     private lateinit var userPreferences : UserPreferences
     private var currentImageUri: Uri? = null
     private var token: String? = null
+    private lateinit var adapter: ScanOutputAdapter
     private lateinit var viewModel: UploadScanViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,14 +65,36 @@ class UploadScanActivity : AppCompatActivity() {
 
         viewModel.uploadSuccess.observe(this) { uploadSuccess ->
             if (uploadSuccess) {
+                hideButtons()
                 showToast("Image uploaded successfully")
-                val intent = Intent(this, ScanOutputActivity::class.java)
-                startActivity(intent)
-                finish()
             } else {
+                showButtons()
                 showToast("Image upload failed")
             }
         }
+
+        adapter = ScanOutputAdapter()
+        binding.rvScanUpload.layoutManager = LinearLayoutManager(this)
+        binding.rvScanUpload.adapter = adapter
+
+        viewModel.scanResponse.observe(this) { scanResponse ->
+            Log.d("scanResults", "Scan Results: $scanResponse")
+            if (scanResponse.isNotEmpty()) {
+                adapter.submitList(scanResponse)
+            }
+        }
+    }
+
+    private fun hideButtons() {
+        binding.btnGalleryScan.visibility = View.GONE
+        binding.btnCameraScan.visibility = View.GONE
+        binding.btnUploadScan.visibility = View.GONE
+    }
+
+    private fun showButtons() {
+        binding.btnGalleryScan.visibility = View.VISIBLE
+        binding.btnCameraScan.visibility = View.VISIBLE
+        binding.btnUploadScan.visibility = View.VISIBLE
     }
 
     private fun startGallery() {

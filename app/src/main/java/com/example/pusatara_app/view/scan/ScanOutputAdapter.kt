@@ -3,6 +3,7 @@ package com.example.pusatara_app.view.scan
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -26,7 +27,17 @@ class ScanOutputAdapter : ListAdapter<ScanResponse, ScanOutputAdapter.ScanResult
         @SuppressLint("SetTextI18n")
         fun bind(scanResult: ScanResponse) {
             binding.tvResultName.text = scanResult.className
-            binding.tvResultPercent.text = "Probability: ${scanResult.probability}"
+            val probability = scanResult.probability
+
+            // Set color based on probability criteria
+            val textColor = when {
+                probability < 33 -> android.R.color.holo_red_light
+                probability in 34.0..66.0 -> android.R.color.holo_orange_light
+                probability in 67.0..100.0 -> android.R.color.holo_green_light
+                else -> android.R.color.black
+            }
+            binding.tvResultPercent.setTextColor(ContextCompat.getColor(itemView.context, textColor))
+            binding.tvResultPercent.text = "$probability%"
         }
     }
 

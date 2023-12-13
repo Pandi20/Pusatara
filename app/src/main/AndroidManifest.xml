@@ -21,9 +21,6 @@
             android:name=".view.detail.DetailMediaActivity"
             android:exported="false" />
         <activity
-            android:name=".view.scan.ScanOutputActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.scan.UploadScanActivity"
             android:exported="false" />
         <activity
