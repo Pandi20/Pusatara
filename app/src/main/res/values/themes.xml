@@ -27,16 +27,19 @@
         <item name="android:backgroundTint">@color/brown</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/pusatara_font</item>
     </style>
     <style name="BtnSecondary">
         <item name="android:backgroundTint">@color/purple</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/pusatara_font</item>
     </style>
     <style name="BtnDanger">
         <item name="android:backgroundTint">@color/red</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/pusatara_font</item>
     </style>
 
     <!-- Switch -->

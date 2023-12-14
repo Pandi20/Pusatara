@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/hallo_home"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/pusatara_font" />
 
             <TextView
                 android:id="@+id/username_home"
@@ -36,7 +37,8 @@
                 android:textColor="?attr/colorSecondary"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="@string/dummy_username" />
+                android:text="@string/dummy_username"
+                android:fontFamily="@font/pusatara_font"/>
         </LinearLayout>
 
         <TextView
@@ -46,6 +48,7 @@
             android:text="@string/msg_greeting_home"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/pusatara_font"
             app:layout_constraintTop_toBottomOf="@+id/greetingUser"
             app:layout_constraintStart_toStartOf="@+id/greetingUser" />
     </LinearLayout>
@@ -65,7 +68,8 @@
             android:layout_height="wrap_content"
             android:text="@string/type_batik"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/pusatara_font" />
 
         <ImageButton
             android:id="@+id/navToBatikGlossary"
@@ -107,7 +111,8 @@
             android:layout_height="wrap_content"
             android:text="@string/type_songket"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/pusatara_font" />
 
         <ImageButton
             android:id="@+id/navToSongketGlossary"
@@ -143,6 +148,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/fab_scan"
+        android:fontFamily="@font/pusatara_font"
         app:icon="@drawable/baseline_camera_24"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.FloatingActionButton.SquareWithRadius" />
 

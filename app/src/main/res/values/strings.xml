@@ -99,4 +99,7 @@
 
     <!-- Upload Scan Activity-->
     <string name="tv_title_result">Your Result</string>
+
+    <!-- Search Activity-->
+    <string name="search_activity_tv">Try search Batik or Songket</string>
 </resources>

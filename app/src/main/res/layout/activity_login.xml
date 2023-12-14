@@ -29,6 +29,7 @@
         android:alpha="0"
         android:text="@string/message_login_page"
         android:textSize="16sp"
+        android:fontFamily="@font/pusatara_font"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +44,7 @@
         android:layout_marginTop="24dp"
         android:alpha="0"
         android:text="@string/username"
+        android:fontFamily="@font/pusatara_font"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +72,7 @@
             android:ems="10"
             android:inputType="textEmailAddress"
             android:hint="@string/username_hint"
+            android:fontFamily="@font/pusatara_font"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,6 +84,7 @@
         android:layout_marginTop="8dp"
         android:alpha="0"
         android:text="@string/password"
+        android:fontFamily="@font/pusatara_font"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,6 +113,7 @@
             android:ems="10"
             android:inputType="textPassword"
             android:hint="@string/password_hint"
+            android:fontFamily="@font/pusatara_font"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,6 +139,7 @@
         android:layout_marginStart="16dp"
         android:alpha="0"
         android:text="@string/donthave_account"
+        android:fontFamily="@font/pusatara_font"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.321"
@@ -152,6 +158,7 @@
         android:minHeight="48dp"
         android:onClick="onSignupTextClick"
         android:text="@string/signup"
+        android:fontFamily="@font/pusatara_font"
         android:textColor="@color/blue"
         android:textSize="16sp"
         android:textStyle="bold"

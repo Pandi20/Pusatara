@@ -29,6 +29,7 @@
             android:text="@string/tv_glossary_name"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:fontFamily="@font/pusatara_font"
             android:layout_marginStart="20dp"
             card_view:layout_constraintStart_toEndOf="@id/iv_glossary"
             card_view:layout_constraintTop_toTopOf="parent"
