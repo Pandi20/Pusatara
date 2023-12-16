@@ -30,7 +30,7 @@ class ProfileActivity : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.profile)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-//        theme()
+        theme()
         userPreferences = UserPreferences.getInstance(applicationContext)
 
         logoutButton = binding.logoutButton

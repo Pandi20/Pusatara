@@ -4,6 +4,7 @@ import com.example.pusatara_app.data.api.response.DetailMediaResponse
 import com.example.pusatara_app.data.api.response.LikePostResponse
 import com.example.pusatara_app.data.api.response.LoginResponse
 import com.example.pusatara_app.data.api.response.MediaResponse
+import com.example.pusatara_app.data.api.response.PatternsItem
 import com.example.pusatara_app.data.api.response.RegisterResponse
 import com.example.pusatara_app.data.api.response.ScanResponse
 import com.example.pusatara_app.data.api.response.UploadMediaResponse
@@ -79,4 +80,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Part image: MultipartBody.Part
     ) : List<ScanResponse>
+
+    @GET("glossary")
+    suspend fun searchGlossary(
+        @Header("Authorization") token: String,
+        @Query("search") searchQuery: String
+    ) : List<PatternsItem>
 }

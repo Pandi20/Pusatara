@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pusatara_app.R
 import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivityUploadScanBinding
 import com.example.pusatara_app.getImageUri
@@ -37,7 +38,7 @@ class UploadScanActivity : AppCompatActivity() {
         binding = ActivityUploadScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Upload Scan"
+        supportActionBar?.title = getString(R.string.upload_scan_bar_name)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         userPreferences = UserPreferences.getInstance(applicationContext)

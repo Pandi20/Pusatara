@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">pusatara-app</string>
+    <string name="app_name">Pusatara</string>
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -99,7 +99,16 @@
 
     <!-- Upload Scan Activity-->
     <string name="tv_title_result">Your Result</string>
+    <string name="upload_scan_bar_name">Upload Scan</string>
 
     <!-- Search Activity-->
     <string name="search_activity_tv">Try search Batik or Songket</string>
+
+    <!-- Fragment Glossary-->
+    <string name="content_desc_tablayout">TabLayout</string>
+    <string name="tab_batik">Batik</string>
+    <string name="tab_songket">Songket</string>
+
+    <!-- Detail Glossary Activity-->
+    <string name="detail_glossary_bar_name">Detail Glossary</string>
 </resources>

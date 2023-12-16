@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
 
         val mainActivity = activity as AppCompatActivity
         val toolbar = mainActivity.supportActionBar?.apply {
-            title = "Home"
+            title = getString(R.string.bottombar_home)
         }
         setHasOptionsMenu(true)
 

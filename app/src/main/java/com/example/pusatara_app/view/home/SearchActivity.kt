@@ -5,18 +5,25 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pusatara_app.R
 import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivitySearchBinding
+import com.example.pusatara_app.view.glossary.GlossaryAdapter
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySearchBinding
     private lateinit var userPreferences: UserPreferences
+    private lateinit var viewModel: SearchViewModel
+    private lateinit var adapter: GlossaryAdapter
     private var token: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +31,30 @@ class SearchActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Search"
+        supportActionBar?.title = getString(R.string.search_btn)
 
         userPreferences = UserPreferences.getInstance(applicationContext)
         lifecycleScope.launch {
             token = userPreferences.getToken().first()
+        }
+
+        viewModel = ViewModelProvider(this)[SearchViewModel::class.java]
+
+        adapter = GlossaryAdapter()
+        binding.rvSearch.adapter = adapter
+        binding.rvSearch.layoutManager = LinearLayoutManager(this)
+
+        viewModel.patternItemList.observe(this) { patternItems ->
+            adapter.submitList(patternItems)
+            binding.tvSearchActivity.visibility = View.GONE
+        }
+
+        viewModel.isLoading.observe(this) { isLoading ->
+            showLoading(isLoading)
+        }
+
+        viewModel.error.observe(this) { error ->
+            showToast("No data found, try again!")
         }
 
     }
@@ -43,7 +69,7 @@ class SearchActivity : AppCompatActivity() {
         searchView.queryHint = resources.getString(R.string.searchbar_hint)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-//                view model utk search item glossary
+                viewModel.searchByPattern("Bearer $token", "Batik")
                 searchView.clearFocus()
                 return true
             }
@@ -53,6 +79,14 @@ class SearchActivity : AppCompatActivity() {
             }
         })
         return true
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     @Suppress("DEPRECATION")

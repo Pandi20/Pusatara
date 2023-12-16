@@ -29,7 +29,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_bar_navigation"
-        app:itemTextAppearance="@font/pusatara_font" />
+        app:itemTextAppearance="@font/open_sans_regular" />
 
     <fragment
         android:id="@+id/nav_host_fragment"

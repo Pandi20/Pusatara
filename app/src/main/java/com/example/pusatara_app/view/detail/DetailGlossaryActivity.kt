@@ -3,6 +3,7 @@ package com.example.pusatara_app.view.detail
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pusatara_app.R
 import com.example.pusatara_app.databinding.ActivityDetailGlossaryBinding
 
 @Suppress("DEPRECATION")
@@ -13,7 +14,7 @@ class DetailGlossaryActivity : AppCompatActivity() {
         binding = ActivityDetailGlossaryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Glossary Detail"
+        supportActionBar?.title = getString(R.string.detail_glossary_bar_name)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 

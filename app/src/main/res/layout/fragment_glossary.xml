@@ -13,8 +13,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tabTextAppearance="@font/pusatara_font"
-        android:contentDescription="TabLayout"/>
+        style="@style/TabLayoutFontStyle"
+        android:contentDescription="@string/content_desc_tablayout"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/glossaryViewPager"

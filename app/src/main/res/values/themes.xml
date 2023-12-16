@@ -55,6 +55,9 @@
         <!-- Adjust this value to control the radius -->
     </style>
 
+    <style name="TabLayoutFontStyle" parent="Widget.Design.TabLayout">
+        <item name="fontFamily">@font/pusatara_font</item>
+    </style>
 
 
 
