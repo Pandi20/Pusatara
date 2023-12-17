@@ -2,12 +2,18 @@ package com.example.pusatara_app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.pusatara_app.databinding.ActivityMainBinding
+import com.example.pusatara_app.view.profile.ProfilePreferences
+import com.example.pusatara_app.view.profile.ProfileViewModel
+import com.example.pusatara_app.view.profile.ProfileViewModelFactory
+import com.example.pusatara_app.view.profile.dataStore
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -37,6 +43,15 @@ class MainActivity : AppCompatActivity() {
             nav.navigate(R.id.menuMedia)
         }
 
+        val preference = ProfilePreferences.getInstance(application.dataStore)
+        val preferenceViewModel = ViewModelProvider(this, ProfileViewModelFactory(preference))[ProfileViewModel::class.java]
+        preferenceViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
