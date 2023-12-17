@@ -48,46 +48,19 @@
         android:textColor="@color/blue"/>
 
     <TextView
-        android:id="@+id/tv_language"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
-        android:text="@string/language"
-        android:fontFamily="@font/pusatara_font"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/profile_name"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_email" />
-
-    <TextView
-        android:id="@+id/tv_info_language"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:fontFamily="@font/pusatara_font"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_language"
-        app:layout_constraintEnd_toEndOf="@+id/switch_theme"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tv_language"
-        app:layout_constraintTop_toTopOf="@+id/tv_language"
-        tools:text="@string/english" />
-
-    <TextView
         android:id="@+id/tv_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginStart="32dp"
         android:text="@string/theme"
         android:textSize="20sp"
         android:textStyle="bold"
         android:fontFamily="@font/pusatara_font"
         app:layout_constraintEnd_toEndOf="@+id/profile_name"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_language"
-        app:layout_constraintTop_toBottomOf="@+id/tv_language" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switch_theme"
