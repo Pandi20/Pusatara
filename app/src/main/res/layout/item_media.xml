@@ -80,11 +80,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="64dp"
+            android:layout_marginEnd="16dp"
             android:layout_toEndOf="@id/img_media_photo"
-            android:fontFamily="@font/pusatara_font"
             android:ellipsize="end"
-            android:maxLines="4"
+            android:fontFamily="@font/pusatara_font"
+            android:maxLines="2"
             android:textSize="14sp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="@+id/img_media_photo"
@@ -94,31 +94,37 @@
             card_view:layout_constraintVertical_bias="0.0"
             tools:text="@string/media_desc" />
 
+        <View
+            android:id="@+id/horizontal_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_media_description" />
+
         <ImageView
             android:id="@+id/like_post"
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/ic_like_border"
-            card_view:layout_constraintBottom_toBottomOf="@+id/tv_media_description"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_media_title"
-            card_view:layout_constraintHorizontal_bias="0.692"
-            card_view:layout_constraintStart_toEndOf="@+id/tv_media_description"
-            card_view:layout_constraintTop_toTopOf="@+id/tv_media_description"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_media_description"
+            card_view:layout_constraintTop_toBottomOf="@+id/horizontal_line"
             card_view:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tv_count_like"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="26dp"
+            android:layout_marginStart="6dp"
             android:layout_toEndOf="@id/img_media_photo"
+            android:fontFamily="@font/pusatara_font"
             android:gravity="center"
             android:textSize="14sp"
-            android:fontFamily="@font/pusatara_font"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="@+id/like_post"
-            card_view:layout_constraintHorizontal_bias="1.0"
-            card_view:layout_constraintStart_toStartOf="@+id/like_post"
-            card_view:layout_constraintTop_toBottomOf="@+id/like_post"
+            card_view:layout_constraintBottom_toBottomOf="@+id/like_post"
+            card_view:layout_constraintStart_toEndOf="@+id/like_post"
+            card_view:layout_constraintTop_toTopOf="@+id/like_post"
             tools:text="Like" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
