@@ -1,12 +1,14 @@
 package com.example.pusatara_app.data.api.retrofit
 
+import com.example.pusatara_app.data.api.response.BatikResponse
 import com.example.pusatara_app.data.api.response.DetailMediaResponse
 import com.example.pusatara_app.data.api.response.LikePostResponse
 import com.example.pusatara_app.data.api.response.LoginResponse
 import com.example.pusatara_app.data.api.response.MediaResponse
-import com.example.pusatara_app.data.api.response.PatternsItem
 import com.example.pusatara_app.data.api.response.RegisterResponse
 import com.example.pusatara_app.data.api.response.ScanResponse
+import com.example.pusatara_app.data.api.response.SearchResponseItem
+import com.example.pusatara_app.data.api.response.SongketResponse
 import com.example.pusatara_app.data.api.response.UploadMediaResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -82,8 +84,20 @@ interface ApiService {
     ) : List<ScanResponse>
 
     @GET("glossary")
+    suspend fun getBatikData(
+        @Header("Authorization") token: String,
+        @Query("id") id: Int
+    ): BatikResponse
+
+    @GET("glossary")
+    suspend fun getSongketData(
+        @Header("Authorization") token: String,
+        @Query("id") id: Int
+    ): SongketResponse
+
+    @GET ("glossary")
     suspend fun searchGlossary(
         @Header("Authorization") token: String,
-        @Query("search") searchQuery: String
-    ) : List<PatternsItem>
+        @Query("q") q : String,
+    ): List<SearchResponseItem>
 }

@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.home.HomeFragment" >
+    tools:context=".view.home.HomeFragment">
 
-    <LinearLayout
-        android:id="@+id/greetingHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
-        <LinearLayout
-            android:id="@+id/greetingUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
             <TextView
                 android:id="@+id/hallo_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hallo_home"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 android:fontFamily="@font/pusatara_font" />
-
             <TextView
                 android:id="@+id/username_home"
                 android:layout_width="wrap_content"
@@ -37,108 +36,103 @@
                 android:textColor="?attr/colorSecondary"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/hallo_home"
+                app:layout_constraintStart_toEndOf="@+id/hallo_home"
+                app:layout_constraintTop_toTopOf="@+id/hallo_home"
                 android:text="@string/dummy_username"
                 android:fontFamily="@font/pusatara_font"/>
-        </LinearLayout>
 
-        <TextView
-            android:id="@+id/msgGreeting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/msg_greeting_home"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/pusatara_font"
-            app:layout_constraintTop_toBottomOf="@+id/greetingUser"
-            app:layout_constraintStart_toStartOf="@+id/greetingUser" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/msgGreeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_greeting_home"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/pusatara_font"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="@+id/hallo_home"
+                app:layout_constraintTop_toBottomOf="@+id/hallo_home" />
 
-    <LinearLayout
-        android:id="@+id/sectionTypeBatik"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greetingHome"
-        android:layout_marginTop="32dp" >
-        <TextView
-            android:id="@+id/typeBatik"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/type_batik"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/pusatara_font" />
+            <TextView
+                android:id="@+id/typeBatik"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type_batik"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="32dp"
+                app:layout_constraintTop_toBottomOf="@+id/msgGreeting"
+                app:layout_constraintStart_toStartOf="@+id/hallo_home"
+                android:fontFamily="@font/pusatara_font" />
 
-        <ImageButton
-            android:id="@+id/navToBatikGlossary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/content_desc_section_btn"
-            android:src="@drawable/ic_arrow_section"
-            tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/navToBatikGlossary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/content_desc_section_btn"
+                android:src="@drawable/ic_arrow_section"
+                app:layout_constraintStart_toEndOf="@+id/typeBatik"
+                app:layout_constraintTop_toTopOf="@+id/typeBatik"
+                app:layout_constraintBottom_toBottomOf="@+id/typeBatik"
+                tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBatik"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/sectionTypeBatik"
-        app:layout_constraintStart_toStartOf="@+id/sectionTypeBatik"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_batik_songket"
-        android:orientation="horizontal"
-        tools:itemCount="1" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBatik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/typeBatik"
+                app:layout_constraintStart_toStartOf="@+id/hallo_home"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:listitem="@layout/item_batik_songket"
+                android:orientation="horizontal"
+                tools:itemCount="1" />
 
-    <LinearLayout
-        android:id="@+id/sectionTypeSongket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvBatik"
-        android:layout_marginTop="32dp" >
-        <TextView
-            android:id="@+id/typeSongket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/type_songket"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/pusatara_font" />
+            <TextView
+                android:id="@+id/typeSongket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type_songket"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/pusatara_font"
+                app:layout_constraintTop_toBottomOf="@+id/rvBatik"
+                app:layout_constraintStart_toStartOf="@+id/hallo_home"/>
 
-        <ImageButton
-            android:id="@+id/navToSongketGlossary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/content_desc_section_btn"
-            android:src="@drawable/ic_arrow_section"
-            tools:ignore="TouchTargetSizeCheck" />
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/navToSongketGlossary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/content_desc_section_btn"
+                android:src="@drawable/ic_arrow_section"
+                tools:ignore="TouchTargetSizeCheck"
+                app:layout_constraintBottom_toBottomOf="@+id/typeSongket"
+                app:layout_constraintStart_toEndOf="@+id/typeSongket"
+                app:layout_constraintTop_toTopOf="@+id/typeSongket"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSongket"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/sectionTypeSongket"
-        app:layout_constraintStart_toStartOf="@+id/sectionTypeSongket"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_batik_songket"
-        android:orientation="horizontal"
-        tools:itemCount="1"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSongket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/typeSongket"
+                app:layout_constraintStart_toStartOf="@+id/hallo_home"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:listitem="@layout/item_batik_songket"
+                android:orientation="horizontal"
+                tools:itemCount="1"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab_scan"

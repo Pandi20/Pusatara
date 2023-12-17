@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pusatara_app.R
 import com.example.pusatara_app.data.di.UserPreferences
 import com.example.pusatara_app.databinding.ActivitySearchBinding
-import com.example.pusatara_app.view.glossary.GlossaryAdapter
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -23,7 +22,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySearchBinding
     private lateinit var userPreferences: UserPreferences
     private lateinit var viewModel: SearchViewModel
-    private lateinit var adapter: GlossaryAdapter
+    private lateinit var adapter: SearchAdapter
     private var token: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +39,12 @@ class SearchActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[SearchViewModel::class.java]
 
-        adapter = GlossaryAdapter()
+        adapter = SearchAdapter()
         binding.rvSearch.adapter = adapter
         binding.rvSearch.layoutManager = LinearLayoutManager(this)
 
-        viewModel.patternItemList.observe(this) { patternItems ->
-            adapter.submitList(patternItems)
+        viewModel.searchItemList.observe(this) { searchItems ->
+            adapter.submitList(searchItems)
             binding.tvSearchActivity.visibility = View.GONE
         }
 
@@ -69,7 +68,7 @@ class SearchActivity : AppCompatActivity() {
         searchView.queryHint = resources.getString(R.string.searchbar_hint)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                viewModel.searchByPattern("Bearer $token", "Batik")
+                viewModel.searchByPattern("Bearer $token", query)
                 searchView.clearFocus()
                 return true
             }
