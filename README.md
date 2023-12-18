@@ -25,7 +25,3 @@ This is the **only repository** for capstone project of group CH2-PS007. Go to r
 | CC   | C172BSY3227| Tristan Budiman                    | [@trisbman](https://github.com/trisbman) | Universitas Mikroskil    |
 | MD   | A293BSX2639| Carissa Chandra                    | [@Ca-ri-ssa](https://github.com/Ca-ri-ssa) | Universitas Pelita Harapan|
 | MD   | A332BSY2217| Moh. Arif Hidayatullah             | [@Com-Us2](https://github.com/Com-Us2) | Universitas Trunojoyo    |
-
-
-## Contributing
-Currently, not accepting any external contributions. Stay tuned for more updates!
