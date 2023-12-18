@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.pusatara_app.R
 import com.example.pusatara_app.data.api.response.SongketPatternsItem
 import com.example.pusatara_app.databinding.ItemGlossaryBinding
-import com.example.pusatara_app.view.detail.DetailSearchActivity
+import com.example.pusatara_app.view.detail.DetailSongketActivity
 import java.io.Serializable
 
 class GlossarySongketAdapter : ListAdapter<SongketPatternsItem, GlossarySongketAdapter.SongketViewHolder>(GlossaryDiffCallback())  {
@@ -26,8 +26,8 @@ class GlossarySongketAdapter : ListAdapter<SongketPatternsItem, GlossarySongketA
         holder.bind(currentItem)
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailSearchActivity::class.java)
-            intent.putExtra(DetailSearchActivity.DETAIL_SEARCH, currentItem as Serializable)
+            val intent = Intent(holder.itemView.context, DetailSongketActivity::class.java)
+            intent.putExtra(DetailSongketActivity.DETAIL_SONGKET, currentItem as Serializable)
             holder.itemView.context.startActivity(intent)
         }
     }
